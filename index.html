@@ -27,7 +27,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:#E8E4DC;font-we
 .app-title em{color:var(--lima);font-style:italic;font-weight:600}
 .app-sub{font-size:13px;opacity:.65;line-height:1.5;max-width:760px;margin-bottom:14px}
 
-.app-tabs{display:flex;gap:6px;margin-bottom:8px}
+.app-tabs{display:flex;gap:6px;margin-bottom:8px;align-items:center;flex-wrap:wrap}
 .app-tab{padding:9px 16px;background:transparent;color:#E8E4DC;border:1px solid rgba(255,255,255,.12);border-radius:8px;cursor:pointer;font-family:inherit;font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;transition:all .2s}
 .app-tab:hover{border-color:rgba(255,255,255,.3)}
 .app-tab.active{background:var(--lima);color:var(--navy);border-color:var(--lima);font-weight:700}
@@ -60,7 +60,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:#E8E4DC;font-we
 .slide-toolbar .layout-name{opacity:.5}
 .slide-toolbar-spacer{flex:1}
 .slide-frame{overflow:hidden;border-radius:8px;box-shadow:0 4px 14px rgba(0,0,0,.4);position:relative;transition:box-shadow .2s, transform .2s;cursor:pointer}
-.slide-frame.selected{box-shadow:0 0 0 3px var(--lima),0 8px 24px rgba(0,0,0,.5);transform:translateY(-2px)}
+.slide-frame.selected{box-shadow:0 0 0 3px var(--lima),0 8px 24px rgba(0,0,0,.5)}
 .slide-frame.feed{width:280px;height:350px}
 .slide-frame.story{width:200px;height:356px}
 .slide-frame.feed .slide{transform:scale(0.2593);transform-origin:top left}
@@ -70,7 +70,7 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:#E8E4DC;font-we
 .slide-add .plus{font-size:32px;font-weight:300;line-height:1}
 
 /* ============= SLIDE CANVAS ============= */
-.slide{position:relative;overflow:hidden;font-family:'Outfit',sans-serif;--text-scale:1;--ts-headline:1;--ts-lead:1;--ts-body:1;--ts-eyebrow:1;--ts-label:1;--ts-numero:1;--ts-sub:1;--ts-footer:1;--ts-quote:1;--ts-attribution:1;--ts-nome:1;--ts-papel:1;--ts-bio:1;--ts-cred:1;--ts-row:1;--ts-item:1;--ts-bigword:1;--ts-cta:1}
+.slide{position:relative;overflow:hidden;font-family:'Outfit',sans-serif;--text-scale:1;--ts-headline:1;--ts-lead:1;--ts-body:1;--ts-eyebrow:1;--ts-label:1;--ts-numero:1;--ts-sub:1;--ts-footer:1;--ts-quote:1;--ts-attribution:1;--ts-nome:1;--ts-papel:1;--ts-bio:1;--ts-cred:1;--ts-row:1;--ts-item:1;--ts-bigword:1;--ts-leftWord:1;--ts-rightWord:1;--ts-cta:1}
 .slide.feed{width:1080px;height:1350px}
 .slide.story{width:1080px;height:1920px}
 .slide [contenteditable]{outline:none}
@@ -91,6 +91,13 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:#E8E4DC;font-we
 .bg-verde-escuro{background:#1F3829;color:var(--creme)}
 .bg-verde-musk{background:#5A6D3E;color:var(--creme)}
 .bg-verde-sage{background:#A8B89B;color:var(--navy)}
+.bg-ferrugem{background:var(--ferrugem);color:var(--creme)}
+
+/* ============= ORNAMENT OVERLAY ============= */
+.slide-ornament{position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.18}
+.bg-creme .slide-ornament, .bg-white .slide-ornament, .bg-cremesoft .slide-ornament, .bg-verde-sage .slide-ornament{opacity:.10}
+.has-photo .slide-ornament{opacity:.25}
+.slide-ornament svg{width:100%;height:100%;display:block}
 
 /* When there's a photo, the text needs cream/white treatment */
 .has-photo{color:#fff}
@@ -109,34 +116,35 @@ body{font-family:'Outfit',sans-serif;background:var(--ink);color:#E8E4DC;font-we
 .slide-foot.sig-top{bottom:auto;top:64px}
 .slide-foot.sig-hidden{display:none}
 .slide-logo{height:calc(88px * var(--text-scale));width:auto;display:block}
-.bg-navy .slide-logo, .bg-grafite .slide-logo, .has-photo .slide-logo, .bg-verde-escuro .slide-logo, .bg-verde-musk .slide-logo{filter:brightness(0) invert(1)}
+.bg-navy .slide-logo, .bg-grafite .slide-logo, .has-photo .slide-logo, .bg-verde-escuro .slide-logo, .bg-verde-musk .slide-logo, .bg-ferrugem .slide-logo{filter:brightness(0) invert(1) !important}
 .slide-foot-text{font-weight:600;font-size:calc(28px * var(--text-scale));letter-spacing:.02em;line-height:1;text-align:right;opacity:.95}
-.bg-navy .slide-foot-text, .bg-grafite .slide-foot-text, .has-photo .slide-foot-text, .bg-verde-escuro .slide-foot-text, .bg-verde-musk .slide-foot-text{color:var(--lima)}
+.bg-navy .slide-foot-text, .bg-grafite .slide-foot-text, .has-photo .slide-foot-text, .bg-verde-escuro .slide-foot-text, .bg-verde-musk .slide-foot-text, .bg-ferrugem .slide-foot-text{color:var(--lima)}
 .bg-creme .slide-foot-text, .bg-cremesoft .slide-foot-text, .bg-white .slide-foot-text, .bg-verde-sage .slide-foot-text{color:var(--ferrugem)}
 .bg-split .slide-foot-text{color:var(--lima)}
 .bg-split .slide-logo{filter:brightness(0) invert(1)}
 
 /* big background S */
 .slide-mark{position:absolute;font-weight:800;line-height:.8;letter-spacing:-.05em;pointer-events:none;user-select:none;z-index:1}
-.bg-navy .slide-mark, .bg-grafite .slide-mark, .bg-verde-escuro .slide-mark, .bg-verde-musk .slide-mark{color:var(--creme);opacity:.04}
+.bg-navy .slide-mark, .bg-grafite .slide-mark, .bg-verde-escuro .slide-mark, .bg-verde-musk .slide-mark, .bg-ferrugem .slide-mark{color:var(--creme);opacity:.04}
 .bg-creme .slide-mark, .bg-cremesoft .slide-mark, .bg-verde-sage .slide-mark{color:var(--navy);opacity:.04}
 .bg-white .slide-mark{color:var(--navy);opacity:.03}
 .has-photo .slide-mark{display:none}
 
 /* em styling — solid lima with proper line height */
 em{font-style:italic;font-weight:inherit}
-/* Default em: refined accent, just italic + accent color, NO tarja */
+/* Default em: refined italic accent, NO tarja */
 .headline em, .lead em, .quote em, .big-word em, .nome em{color:var(--ferrugem);font-weight:inherit;background:transparent;padding:0;display:inline}
 .bg-navy .headline em, .bg-navy .lead em, .bg-navy .quote em,
 .bg-grafite .headline em, .bg-grafite .lead em, .bg-grafite .quote em,
 .bg-verde-escuro .headline em, .bg-verde-escuro .lead em, .bg-verde-escuro .quote em,
 .bg-verde-musk .headline em, .bg-verde-musk .lead em, .bg-verde-musk .quote em,
+.bg-ferrugem .headline em, .bg-ferrugem .lead em, .bg-ferrugem .quote em, .bg-ferrugem .big-word em, .bg-ferrugem .nome em,
 .has-photo .headline em, .has-photo .lead em, .has-photo .quote em{color:var(--lima);background:transparent;padding:0;display:inline}
-
-/* OPT-IN: tarja class for the "shout it" treatment, only when manually requested */
+/* OPT-IN: tarja via **palavra** syntax */
 em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!important;padding:0 12px!important;display:inline-block!important;line-height:.98!important}
 .bg-navy em.tarja, .bg-navy em[data-tarja],
-.bg-verde-escuro em.tarja, .bg-verde-escuro em[data-tarja]{color:var(--navy)!important}
+.bg-verde-escuro em.tarja, .bg-verde-escuro em[data-tarja],
+.bg-ferrugem em.tarja, .bg-ferrugem em[data-tarja]{color:var(--navy)!important}
 
 /* ============= LAYOUT: manifesto ============= */
 .l-manifesto{display:flex;flex-direction:column;justify-content:center;padding:140px 88px 280px;width:100%;height:100%;position:relative}
@@ -146,12 +154,13 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 
 /* ============= LAYOUT: capa-numero ============= */
 .l-capa-numero{padding:120px 88px 280px;display:flex;flex-direction:column;justify-content:space-between;width:100%;height:100%;position:relative}
-.l-capa-numero .label{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-label,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px}
-.l-capa-numero .label::before{content:"";display:inline-block;width:32px;height:1px;background:currentColor;opacity:.7}
+.l-capa-numero .label{font-weight:700;font-size:calc(24px * var(--text-scale) * var(--ts-label,1));letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px}
 .bg-navy .l-capa-numero .label{color:var(--lima)}
+.bg-ferrugem .l-capa-numero .label{color:var(--lima)}
 .bg-creme .l-capa-numero .label, .bg-white .l-capa-numero .label, .bg-cremesoft .l-capa-numero .label{color:var(--ferrugem)}
 .l-capa-numero .numero{font-weight:800;font-size:calc(280px * var(--text-scale) * var(--ts-numero,1));line-height:.85;letter-spacing:-.05em;margin-bottom:48px;position:relative;z-index:2;white-space:nowrap}
-.bg-navy .l-capa-numero .numero{color:var(--creme);opacity:.95}
+.bg-navy .l-capa-numero .numero{color:var(--lima)}
+.bg-ferrugem .l-capa-numero .numero{color:var(--lima)}
 .bg-creme .l-capa-numero .numero, .bg-white .l-capa-numero .numero, .bg-cremesoft .l-capa-numero .numero{color:var(--navy)}
 .l-capa-numero .numero.small{font-size:calc(160px * var(--text-scale) * var(--ts-numero,1));line-height:.95}
 .l-capa-numero .headline{font-weight:600;font-size:calc(78px * var(--text-scale) * var(--ts-headline,1));line-height:1.04;letter-spacing:-.03em;max-width:880px;position:relative;z-index:2;word-break:keep-all}
@@ -163,6 +172,8 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 .l-capa-blocos .block-left{background:#F0E5D5;color:var(--ferrugem);justify-content:flex-start}
 .l-capa-blocos .block-right{background:var(--navy);color:var(--lima);justify-content:flex-end;text-align:right}
 .l-capa-blocos .big-word{font-weight:800;font-size:calc(160px * var(--text-scale) * var(--ts-bigword,1));line-height:.92;letter-spacing:-.04em;text-transform:uppercase}
+.l-capa-blocos .block-left .big-word{font-size:calc(160px * var(--text-scale) * var(--ts-leftWord, var(--ts-bigword,1)))}
+.l-capa-blocos .block-right .big-word{font-size:calc(160px * var(--text-scale) * var(--ts-rightWord, var(--ts-bigword,1)))}
 .l-capa-blocos .foot-line{position:absolute;left:88px;right:88px;top:50%;transform:translateY(-50%);font-size:calc(32px * var(--text-scale) * var(--ts-footer,1));font-weight:500;font-style:italic;color:#fff;opacity:.95;text-align:center;z-index:3;background:rgba(0,43,92,.85);padding:18px 36px;border-radius:999px;display:inline-block;width:fit-content;left:50%;transform:translate(-50%,-50%)}
 
 /* ============= LAYOUT: comparacao-x ============= */
@@ -188,19 +199,19 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 
 /* ============= LAYOUT: lista-numerada ============= */
 .l-lista-numerada{padding:120px 88px 280px;display:flex;flex-direction:column;width:100%;height:100%;position:relative}
-.l-lista-numerada .eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px}
-.l-lista-numerada .eyebrow::before{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.l-lista-numerada .eyebrow{font-weight:700;font-size:calc(22px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:18px}
+.l-lista-numerada .eyebrow::before{content:"";width:48px;height:2px;background:currentColor}
 .bg-navy .l-lista-numerada .eyebrow{color:var(--lima)}
 .bg-creme .l-lista-numerada .eyebrow, .bg-white .l-lista-numerada .eyebrow, .bg-cremesoft .l-lista-numerada .eyebrow{color:var(--ferrugem)}
 .l-lista-numerada .headline{font-weight:600;font-size:calc(66px * var(--text-scale) * var(--ts-headline,1));line-height:1.06;letter-spacing:-.03em;margin-bottom:48px;max-width:860px;word-break:keep-all}
 .l-lista-numerada .items{display:flex;flex-direction:column}
-.l-lista-numerada .item{display:flex;align-items:flex-start;gap:36px;padding:22px 0;border-bottom:1px solid rgba(0,0,0,.08)}
-.bg-navy .l-lista-numerada .item, .bg-verde-escuro .l-lista-numerada .item, .bg-verde-musk .l-lista-numerada .item, .bg-grafite .l-lista-numerada .item{border-color:rgba(244,237,224,.15)}
+.l-lista-numerada .item{display:flex;align-items:flex-start;gap:32px;padding:26px 0;border-bottom:1px solid rgba(0,0,0,.1)}
+.bg-navy .l-lista-numerada .item{border-color:rgba(244,237,224,.2)}
 .l-lista-numerada .item:last-child{border-bottom:none}
-.l-lista-numerada .item-num{font-weight:400;font-size:calc(20px * var(--text-scale) * var(--ts-item,1));letter-spacing:.14em;flex-shrink:0;width:48px;line-height:1.3;padding-top:8px;font-feature-settings:"tnum";opacity:.7}
+.l-lista-numerada .item-num{font-weight:800;font-size:calc(38px * var(--text-scale) * var(--ts-item,1));letter-spacing:.02em;flex-shrink:0;width:80px;line-height:1.1}
 .bg-navy .l-lista-numerada .item-num{color:var(--lima)}
 .bg-creme .l-lista-numerada .item-num, .bg-white .l-lista-numerada .item-num{color:var(--ferrugem)}
-.l-lista-numerada .item-text{font-weight:400;font-size:calc(34px * var(--text-scale) * var(--ts-item,1));line-height:1.36;letter-spacing:-.005em;flex:1}
+.l-lista-numerada .item-text{font-weight:500;font-size:calc(36px * var(--text-scale) * var(--ts-item,1));line-height:1.34;letter-spacing:-.005em;flex:1}
 .l-lista-numerada .foot-text{margin-top:36px;font-weight:300;font-style:italic;font-size:calc(28px * var(--text-scale) * var(--ts-footer,1));line-height:1.4;opacity:.75}
 
 /* ============= LAYOUT: pull-quote ============= */
@@ -217,8 +228,8 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 
 /* ============= LAYOUT: texto-corrido ============= */
 .l-texto-corrido{padding:120px 88px 280px;display:flex;flex-direction:column;justify-content:center;width:100%;height:100%;position:relative}
-.l-texto-corrido .eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px}
-.l-texto-corrido .eyebrow::before{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.l-texto-corrido .eyebrow{font-weight:700;font-size:calc(22px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.2em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:18px}
+.l-texto-corrido .eyebrow::before{content:"";width:48px;height:2px;background:currentColor}
 .bg-navy .l-texto-corrido .eyebrow{color:var(--lima)}
 .bg-creme .l-texto-corrido .eyebrow, .bg-white .l-texto-corrido .eyebrow, .bg-cremesoft .l-texto-corrido .eyebrow{color:var(--ferrugem)}
 .l-texto-corrido .lead{font-weight:600;font-size:calc(64px * var(--text-scale) * var(--ts-lead,1));line-height:1.06;letter-spacing:-.03em;margin-bottom:44px;max-width:860px;word-break:keep-all}
@@ -229,18 +240,19 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 /* ============= LAYOUT: cta-final ============= */
 .l-cta-final{padding:140px 88px 280px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;width:100%;height:100%;position:relative}
 .l-cta-final .slide-mark{font-size:calc(1200px * 1);top:-200px;right:-240px}
-.l-cta-final .eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:16px}
-.l-cta-final .eyebrow::before{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.l-cta-final .eyebrow{font-weight:700;font-size:calc(22px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.2em;text-transform:uppercase;margin-bottom:40px;display:flex;align-items:center;gap:18px}
+.l-cta-final .eyebrow::before{content:"";width:48px;height:2px;background:currentColor}
 .bg-navy .l-cta-final .eyebrow{color:var(--lima)}
 .bg-creme .l-cta-final .eyebrow, .bg-white .l-cta-final .eyebrow, .bg-cremesoft .l-cta-final .eyebrow{color:var(--ferrugem)}
 .l-cta-final .headline{font-weight:600;font-size:calc(108px * var(--text-scale) * var(--ts-headline,1));line-height:1.02;letter-spacing:-.035em;margin-bottom:40px;max-width:920px;position:relative;z-index:2;word-break:keep-all}
 .l-cta-final .sub{font-weight:400;font-size:calc(34px * var(--text-scale) * var(--ts-sub,1));line-height:1.4;letter-spacing:-.005em;margin-bottom:64px;max-width:760px;opacity:.85;position:relative;z-index:2}
-.l-cta-final .btn-big{display:inline-flex;align-items:center;gap:32px;padding:28px 48px 28px 56px;font-weight:500;font-size:calc(28px * var(--text-scale) * var(--ts-cta,1));letter-spacing:.06em;text-transform:none;border-radius:0;position:relative;z-index:2;border:1px solid currentColor;background:transparent}
-.bg-navy .l-cta-final .btn-big, .has-photo .l-cta-final .btn-big,
-.bg-verde-escuro .l-cta-final .btn-big, .bg-verde-musk .l-cta-final .btn-big{color:var(--creme)}
-.bg-creme .l-cta-final .btn-big, .bg-white .l-cta-final .btn-big, .bg-cremesoft .l-cta-final .btn-big{color:var(--navy)}
-.l-cta-final .btn-big .arrow{display:inline-block;width:auto;height:auto;border-radius:0;position:relative;background:transparent!important;font-size:0}
-.l-cta-final .btn-big .arrow::after{content:"→";position:static;transform:none;font-weight:300;font-size:calc(28px * var(--text-scale) * var(--ts-cta,1));line-height:1;color:inherit}
+.l-cta-final .btn-big{display:inline-flex;align-items:center;gap:24px;padding:40px 72px;font-weight:700;font-size:calc(36px * var(--text-scale) * var(--ts-cta,1));letter-spacing:.1em;text-transform:uppercase;border-radius:999px;position:relative;z-index:2}
+.bg-navy .l-cta-final .btn-big, .has-photo .l-cta-final .btn-big{background:var(--lima);color:var(--navy)}
+.bg-creme .l-cta-final .btn-big, .bg-white .l-cta-final .btn-big, .bg-cremesoft .l-cta-final .btn-big{background:var(--navy);color:var(--creme)}
+.l-cta-final .btn-big .arrow{display:inline-block;width:48px;height:48px;border-radius:999px;position:relative}
+.bg-navy .l-cta-final .btn-big .arrow{background:var(--navy);color:var(--lima)}
+.bg-creme .l-cta-final .btn-big .arrow, .bg-white .l-cta-final .btn-big .arrow, .bg-cremesoft .l-cta-final .btn-big .arrow{background:var(--lima);color:var(--navy)}
+.l-cta-final .btn-big .arrow::after{content:"→";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-weight:700;font-size:32px;line-height:1}
 
 /* ============= LAYOUT: instrutor-card ============= */
 .l-instrutor-card{padding:100px 88px 320px;display:flex;flex-direction:column;width:100%;height:100%;position:relative}
@@ -282,25 +294,19 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 .l-editorial-split .panel-left .pl-content{position:absolute;bottom:200px;left:64px;right:64px;z-index:2}
 .l-editorial-split .panel-left .pl-tag{font-weight:500;font-size:calc(16px * var(--text-scale) * var(--ts-label,1));letter-spacing:.2em;text-transform:uppercase;color:var(--lima);margin-bottom:12px}
 .l-editorial-split .panel-left .pl-quote{font-weight:400;font-style:italic;font-size:calc(28px * var(--text-scale) * var(--ts-quote,1));line-height:1.35;color:var(--creme);opacity:.85}
-.l-editorial-split .panel-right{padding:96px 72px;display:flex;flex-direction:column;justify-content:center;position:relative}
-.l-editorial-split .panel-right.bg-creme-side{background:var(--creme);color:var(--navy)}
-.l-editorial-split .panel-right.bg-white-side{background:#FFFFFF;color:var(--navy)}
-.l-editorial-split .panel-right.bg-cremesoft-side{background:var(--cremesoft);color:var(--navy)}
-.l-editorial-split .panel-right.bg-grafite-side{background:var(--grafite);color:var(--creme)}
-.l-editorial-split .panel-right.bg-verde-escuro-side{background:#1F3829;color:var(--creme)}
-.l-editorial-split .panel-right.bg-verde-musk-side{background:#5A6D3E;color:var(--creme)}
-.l-editorial-split .panel-right.bg-verde-sage-side{background:#A8B89B;color:var(--navy)}
-.l-editorial-split .panel-right.bg-split-side{background:var(--creme);color:var(--navy)}
+/* Text panel always contrasts the left (photo/dark) panel */
+.l-editorial-split .panel-right{padding:96px 72px;display:flex;flex-direction:column;justify-content:center;position:relative;background:var(--creme);color:var(--navy)}
 .l-editorial-split .panel-right.bg-navy-side{background:var(--creme);color:var(--navy)}
-/* Fallback if no class matches */
-.l-editorial-split .panel-right{background:var(--creme);color:var(--navy)}
-.l-editorial-split .panel-right.bg-grafite-side, .l-editorial-split .panel-right.bg-verde-escuro-side, .l-editorial-split .panel-right.bg-verde-musk-side{color:var(--creme)}
-.l-editorial-split .panel-right.bg-grafite-side .er-headline, .l-editorial-split .panel-right.bg-verde-escuro-side .er-headline, .l-editorial-split .panel-right.bg-verde-musk-side .er-headline{color:var(--creme)}
-.l-editorial-split .panel-right.bg-grafite-side .er-body, .l-editorial-split .panel-right.bg-verde-escuro-side .er-body, .l-editorial-split .panel-right.bg-verde-musk-side .er-body{color:rgba(244,237,224,.85)}
+.l-editorial-split .panel-right.bg-creme-side{background:var(--navy);color:var(--creme)}
+.l-editorial-split .panel-right.bg-white-side{background:var(--navy);color:var(--creme)}
+.l-editorial-split .panel-right.bg-cremesoft-side{background:var(--navy);color:var(--creme)}
+.l-editorial-split .panel-right.bg-grafite-side{background:var(--creme);color:var(--navy)}
+.l-editorial-split .panel-right.bg-verde-escuro-side{background:var(--creme);color:var(--navy)}
+.l-editorial-split .panel-right.bg-verde-musk-side{background:var(--creme);color:var(--navy)}
+.l-editorial-split .panel-right.bg-verde-sage-side{background:var(--navy);color:var(--creme)}
 .l-editorial-split .er-meta{display:flex;align-items:center;gap:20px;font-weight:500;font-size:calc(14px * var(--text-scale) * var(--ts-label,1));letter-spacing:.22em;text-transform:uppercase;opacity:.55;margin-bottom:48px}
 .l-editorial-split .er-meta::before{content:"";display:block;width:32px;height:1px;background:currentColor;opacity:.5;flex-shrink:0}
-.l-editorial-split .er-meta > span{flex-shrink:0}
-.l-editorial-split .er-meta > span:last-child{margin-left:auto;padding-left:20px}
+.l-editorial-split .er-meta > span:last-child{margin-left:auto}
 .l-editorial-split .er-headline{font-weight:600;font-size:calc(54px * var(--text-scale) * var(--ts-headline,1));line-height:1.08;letter-spacing:-.025em;margin-bottom:36px;color:var(--navy)}
 .l-editorial-split .er-body{font-weight:400;font-size:calc(22px * var(--text-scale) * var(--ts-body,1));line-height:1.55;color:var(--grafite);max-width:480px}
 .l-editorial-split .er-body em{color:var(--ferrugem);font-style:italic;font-weight:500}
@@ -314,28 +320,159 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 .bg-navy .l-stat-drop .stat-big, .bg-verde-escuro .l-stat-drop .stat-big, .bg-verde-musk .l-stat-drop .stat-big{color:var(--lima)}
 .bg-creme .l-stat-drop .stat-big, .bg-cremesoft .l-stat-drop .stat-big, .bg-white .l-stat-drop .stat-big{color:var(--navy)}
 .l-stat-drop .stat-context{font-weight:400;font-size:calc(28px * var(--text-scale) * var(--ts-body,1));line-height:1.45;max-width:680px;letter-spacing:-.005em;opacity:.9}
-.l-stat-drop .stat-context em{color:var(--ferrugem);font-style:italic;font-weight:500}
-.bg-navy .l-stat-drop .stat-context em, .bg-verde-escuro .l-stat-drop .stat-context em{color:var(--lima)}
 .l-stat-drop .bottom-bar{padding:0 88px 200px;width:100%;display:flex;justify-content:center;font-weight:400;font-size:calc(16px * var(--text-scale) * var(--ts-footer,1));letter-spacing:.18em;text-transform:uppercase;opacity:.5;margin-top:48px}
 
 /* ============= LAYOUT: index-card ============= */
 .l-index-card{padding:96px 88px 280px;display:flex;flex-direction:column;width:100%;height:100%;position:relative}
 .l-index-card .ic-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:64px;font-weight:500;font-size:calc(14px * var(--text-scale) * var(--ts-label,1));letter-spacing:.22em;text-transform:uppercase;opacity:.55}
-.l-index-card .ic-top .ic-pn{font-variant-numeric:tabular-nums}
 .l-index-card .ic-number{font-weight:600;font-size:calc(220px * var(--text-scale) * var(--ts-numero,1));line-height:.9;letter-spacing:-.05em;margin-bottom:48px;display:flex;align-items:flex-end;gap:24px}
 .bg-navy .l-index-card .ic-number, .bg-verde-escuro .l-index-card .ic-number, .bg-verde-musk .l-index-card .ic-number{color:var(--lima)}
 .l-index-card .ic-number-suffix{font-weight:400;font-size:calc(40px * var(--text-scale) * var(--ts-label,1));opacity:.55;margin-bottom:24px;letter-spacing:0;line-height:1.2}
 .l-index-card .ic-rule{width:120px;height:1px;background:currentColor;opacity:.4;margin-bottom:36px}
 .l-index-card .ic-title{font-weight:600;font-size:calc(56px * var(--text-scale) * var(--ts-headline,1));line-height:1.08;letter-spacing:-.025em;margin-bottom:32px;max-width:780px}
 .l-index-card .ic-body{font-weight:400;font-size:calc(28px * var(--text-scale) * var(--ts-body,1));line-height:1.5;letter-spacing:-.005em;max-width:780px;opacity:.85}
-.l-index-card .ic-body em{color:var(--ferrugem);font-style:italic;font-weight:500}
-.bg-navy .l-index-card .ic-body em, .bg-verde-escuro .l-index-card .ic-body em{color:var(--lima)}
 
-/* ============= PAGE NUMBER (optional badge for any slide) ============= */
-.slide-page-num{position:absolute;top:64px;right:88px;z-index:5;font-weight:500;font-size:14px;letter-spacing:.22em;text-transform:uppercase;opacity:.55;font-variant-numeric:tabular-nums}
-.bg-navy .slide-page-num, .bg-grafite .slide-page-num, .bg-verde-escuro .slide-page-num, .bg-verde-musk .slide-page-num, .has-photo .slide-page-num{color:var(--lima)}
-.bg-creme .slide-page-num, .bg-white .slide-page-num, .bg-cremesoft .slide-page-num{color:var(--ferrugem)}
-.slide-page-num.hidden{display:none}
+/* ============= LAYOUT: photo-quote ============= */
+.l-photo-quote{padding:0;position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.l-photo-quote .pq-content{position:relative;z-index:3;padding:140px 88px 280px}
+.l-photo-quote .pq-mark{font-weight:300;font-size:calc(120px * var(--text-scale) * var(--ts-quote,1));line-height:.6;color:var(--lima);margin-bottom:24px;opacity:.95}
+.l-photo-quote .pq-quote{font-weight:500;font-style:italic;font-size:calc(72px * var(--text-scale) * var(--ts-quote,1));line-height:1.12;letter-spacing:-.02em;color:#fff;margin-bottom:36px;max-width:920px}
+.l-photo-quote .pq-quote em{font-style:normal;font-weight:600;color:var(--lima);background:transparent;padding:0;display:inline}
+.l-photo-quote .pq-attribution{font-weight:500;font-size:calc(24px * var(--text-scale) * var(--ts-attribution,1));letter-spacing:.18em;text-transform:uppercase;color:var(--lima);display:flex;align-items:center;gap:14px}
+.l-photo-quote .pq-attribution::before{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.l-photo-quote.no-photo{background:var(--navy)}
+.bg-creme .l-photo-quote.no-photo, .bg-white .l-photo-quote.no-photo, .bg-cremesoft .l-photo-quote.no-photo{background:inherit}
+.bg-creme .l-photo-quote.no-photo .pq-quote, .bg-white .l-photo-quote.no-photo .pq-quote, .bg-cremesoft .l-photo-quote.no-photo .pq-quote{color:var(--navy)}
+.bg-creme .l-photo-quote.no-photo .pq-mark, .bg-white .l-photo-quote.no-photo .pq-mark, .bg-cremesoft .l-photo-quote.no-photo .pq-mark{color:var(--ferrugem)}
+.bg-creme .l-photo-quote.no-photo .pq-attribution, .bg-white .l-photo-quote.no-photo .pq-attribution, .bg-cremesoft .l-photo-quote.no-photo .pq-attribution{color:var(--ferrugem)}
+.bg-creme .l-photo-quote.no-photo .pq-quote em, .bg-white .l-photo-quote.no-photo .pq-quote em, .bg-cremesoft .l-photo-quote.no-photo .pq-quote em{color:var(--ferrugem)}
+
+/* ============= LAYOUT: side-photo ============= */
+.l-side-photo{padding:0;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;position:relative}
+.l-side-photo .sp-photo{position:relative;overflow:hidden;background:var(--navy)}
+.l-side-photo .sp-photo .sp-photo-tag{position:absolute;bottom:28px;left:28px;z-index:3;font-weight:500;font-size:calc(14px * var(--text-scale) * var(--ts-label,1));letter-spacing:.22em;text-transform:uppercase;color:var(--lima);display:flex;align-items:center;gap:12px}
+.l-side-photo .sp-photo .sp-photo-tag::before{content:"";width:24px;height:1px;background:currentColor}
+/* Text panel always contrasts the photo side */
+.l-side-photo .sp-text{padding:88px 72px 280px;display:flex;flex-direction:column;justify-content:center;background:var(--creme);color:var(--navy)}
+.l-side-photo.bg-navy-side .sp-text{background:var(--creme);color:var(--navy)}
+.l-side-photo.bg-creme-side .sp-text{background:var(--navy);color:var(--creme)}
+.l-side-photo.bg-white-side .sp-text{background:var(--navy);color:var(--creme)}
+.l-side-photo.bg-cremesoft-side .sp-text{background:var(--navy);color:var(--creme)}
+.l-side-photo.bg-grafite-side .sp-text{background:var(--creme);color:var(--navy)}
+.l-side-photo.bg-verde-escuro-side .sp-text{background:var(--creme);color:var(--navy)}
+.l-side-photo.bg-verde-musk-side .sp-text{background:var(--creme);color:var(--navy)}
+.l-side-photo.bg-verde-sage-side .sp-text{background:var(--navy);color:var(--creme)}
+.l-side-photo .sp-eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:28px;display:flex;align-items:center;gap:16px;color:var(--ferrugem)}
+.l-side-photo.bg-navy-side .sp-eyebrow, .l-side-photo.bg-verde-escuro-side .sp-eyebrow, .l-side-photo.bg-verde-musk-side .sp-eyebrow{color:var(--lima)}
+.l-side-photo .sp-eyebrow::before{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.l-side-photo .sp-headline{font-weight:600;font-size:calc(58px * var(--text-scale) * var(--ts-headline,1));line-height:1.08;letter-spacing:-.025em;margin-bottom:32px;max-width:520px}
+.l-side-photo .sp-headline em{color:var(--ferrugem);background:transparent;padding:0;display:inline;font-style:italic;font-weight:600}
+.l-side-photo.bg-navy-side .sp-headline em, .l-side-photo.bg-verde-escuro-side .sp-headline em{color:var(--lima)}
+.l-side-photo .sp-body{font-weight:400;font-size:calc(24px * var(--text-scale) * var(--ts-body,1));line-height:1.52;letter-spacing:-.005em;max-width:520px;opacity:.85}
+
+/* ============= LAYOUT: frame ============= */
+.l-frame{padding:88px 88px 280px;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative}
+.l-frame .fr-eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.24em;text-transform:uppercase;margin-bottom:24px;display:flex;align-items:center;gap:14px}
+.l-frame .fr-eyebrow::before, .l-frame .fr-eyebrow::after{content:"";width:32px;height:1px;background:currentColor;opacity:.7}
+.bg-navy .l-frame .fr-eyebrow, .bg-verde-escuro .l-frame .fr-eyebrow, .bg-verde-musk .l-frame .fr-eyebrow{color:var(--lima)}
+.bg-creme .l-frame .fr-eyebrow, .bg-white .l-frame .fr-eyebrow, .bg-cremesoft .l-frame .fr-eyebrow{color:var(--ferrugem)}
+.l-frame .fr-photo{width:560px;height:560px;border-radius:8px;background:var(--navy);background-size:cover;background-position:center;margin-bottom:48px;position:relative;overflow:hidden}
+.l-frame .fr-photo::after{content:"";position:absolute;inset:14px;border:1px solid rgba(255,255,255,.18);border-radius:4px;pointer-events:none}
+.l-frame .fr-headline{font-weight:600;font-size:calc(64px * var(--text-scale) * var(--ts-headline,1));line-height:1.04;letter-spacing:-.025em;margin-bottom:24px;max-width:880px}
+.l-frame .fr-headline em{background:transparent;padding:0;color:inherit;display:inline;font-style:italic;font-weight:600;border-bottom:3px solid var(--lima)}
+.l-frame .fr-sub{font-weight:400;font-size:calc(28px * var(--text-scale) * var(--ts-sub,1));line-height:1.4;letter-spacing:-.005em;max-width:760px;opacity:.85}
+
+/* ============= LAYOUT: centered ============= */
+.l-centered{padding:140px 88px 280px;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.l-centered .slide-mark{font-size:calc(1200px * 1);bottom:-200px;left:-200px}
+.l-centered .ce-eyebrow{font-weight:500;font-size:calc(18px * var(--text-scale) * var(--ts-eyebrow,1));letter-spacing:.28em;text-transform:uppercase;margin-bottom:48px;display:flex;align-items:center;gap:16px;position:relative;z-index:2}
+.l-centered .ce-eyebrow::before, .l-centered .ce-eyebrow::after{content:"";width:48px;height:1px;background:currentColor;opacity:.7}
+.bg-navy .l-centered .ce-eyebrow, .bg-verde-escuro .l-centered .ce-eyebrow, .bg-verde-musk .l-centered .ce-eyebrow, .has-photo .l-centered .ce-eyebrow{color:var(--lima)}
+.bg-creme .l-centered .ce-eyebrow, .bg-white .l-centered .ce-eyebrow, .bg-cremesoft .l-centered .ce-eyebrow{color:var(--ferrugem)}
+.l-centered .ce-headline{font-weight:600;font-size:calc(96px * var(--text-scale) * var(--ts-headline,1));line-height:1.04;letter-spacing:-.035em;margin-bottom:40px;max-width:860px;position:relative;z-index:2;word-break:keep-all}
+.l-centered .ce-body{font-weight:400;font-size:calc(32px * var(--text-scale) * var(--ts-body,1));line-height:1.5;letter-spacing:-.005em;max-width:680px;opacity:.85;position:relative;z-index:2}
+.l-centered .ce-body em{color:var(--ferrugem);background:transparent;padding:0;display:inline;font-style:italic;font-weight:500}
+.bg-navy .l-centered .ce-body em, .bg-verde-escuro .l-centered .ce-body em, .bg-verde-musk .l-centered .ce-body em{color:var(--lima)}
+
+
+/* ============= VARIATIONS — modify existing layouts ============= */
+/* Manifesto variations */
+.slide.var-2 .l-manifesto{text-align:center;align-items:center;padding-left:88px;padding-right:88px}
+.slide.var-2 .l-manifesto .headline{text-align:center;max-width:980px}
+.slide.var-2 .l-manifesto .foot-line{text-align:center;font-style:italic;opacity:.6}
+.slide.var-3 .l-manifesto{padding-left:120px;padding-right:88px}
+.slide.var-3 .l-manifesto .headline{font-weight:600;font-style:italic;font-size:calc(116px * var(--text-scale) * var(--ts-headline,1));line-height:1.05}
+.slide.var-3 .l-manifesto .foot-line{font-style:normal;font-weight:500;opacity:.85;font-size:calc(28px * var(--text-scale) * var(--ts-footer,1));letter-spacing:.18em;text-transform:uppercase;margin-top:36px}
+
+/* CTA-final variations */
+.slide.var-2 .l-cta-final{text-align:left;align-items:flex-start;padding:140px 88px 280px}
+.slide.var-2 .l-cta-final .headline{text-align:left;max-width:880px}
+.slide.var-2 .l-cta-final .eyebrow{margin-bottom:32px}
+.slide.var-2 .l-cta-final .sub{text-align:left;margin-bottom:48px}
+.slide.var-3 .l-cta-final{padding:140px 88px 280px;align-items:flex-start;text-align:left}
+.slide.var-3 .l-cta-final .eyebrow{margin-bottom:48px}
+.slide.var-3 .l-cta-final .headline{font-weight:700;font-size:calc(94px * var(--text-scale) * var(--ts-headline,1));max-width:760px;border-left:4px solid currentColor;padding-left:36px;text-align:left;line-height:1.05}
+.bg-navy .slide.var-3 .l-cta-final .headline,.bg-verde-escuro .slide.var-3 .l-cta-final .headline{border-left-color:var(--lima)}
+.bg-creme .slide.var-3 .l-cta-final .headline,.bg-white .slide.var-3 .l-cta-final .headline,.bg-cremesoft .slide.var-3 .l-cta-final .headline{border-left-color:var(--ferrugem)}
+.slide.var-3 .l-cta-final .sub{padding-left:40px;text-align:left;max-width:680px}
+.slide.var-3 .l-cta-final .btn-big{margin-left:40px}
+
+/* Capa-numero variations */
+.slide.var-2 .l-capa-numero{align-items:center;text-align:center;padding:120px 88px 280px;justify-content:center}
+.slide.var-2 .l-capa-numero .label{justify-content:center;display:flex}
+.slide.var-2 .l-capa-numero .label::before{display:none}
+.slide.var-2 .l-capa-numero .numero{text-align:center;margin:0 auto 48px}
+.slide.var-2 .l-capa-numero .headline{text-align:center;margin:0 auto}
+.slide.var-2 .l-capa-numero .sub{text-align:center;margin:32px auto 0}
+.slide.var-3 .l-capa-numero{display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;justify-content:flex-start;padding:140px 88px 280px}
+.slide.var-3 .l-capa-numero .label{grid-column:1/-1;width:100%}
+.slide.var-3 .l-capa-numero .numero{font-size:calc(180px * var(--text-scale) * var(--ts-numero,1));margin-bottom:0;line-height:1}
+.slide.var-3 .l-capa-numero .headline{font-size:calc(62px * var(--text-scale) * var(--ts-headline,1));margin-top:0}
+.slide.var-3 .l-capa-numero .sub{grid-column:1/-1;margin-top:24px}
+
+/* Lista-numerada variations */
+.slide.var-2 .l-lista-numerada .item{padding:32px 0;align-items:center}
+.slide.var-2 .l-lista-numerada .item-num{font-size:calc(56px * var(--text-scale) * var(--ts-item,1));font-weight:700;letter-spacing:-.02em;opacity:1;padding-top:0;width:90px}
+.bg-navy .slide.var-2 .l-lista-numerada .item-num,.bg-verde-escuro .slide.var-2 .l-lista-numerada .item-num,.bg-verde-musk .slide.var-2 .l-lista-numerada .item-num{color:var(--lima)}
+.bg-creme .slide.var-2 .l-lista-numerada .item-num,.bg-white .slide.var-2 .l-lista-numerada .item-num,.bg-cremesoft .slide.var-2 .l-lista-numerada .item-num{color:var(--ferrugem)}
+.slide.var-3 .l-lista-numerada .item-num{display:none}
+.slide.var-3 .l-lista-numerada .item{padding:20px 0;border-bottom-style:dashed}
+.slide.var-3 .l-lista-numerada .item-text{font-size:calc(32px * var(--text-scale) * var(--ts-item,1));font-weight:500}
+
+/* Pull-quote variations */
+.slide.var-2 .l-pull-quote{text-align:center;align-items:center}
+.slide.var-2 .l-pull-quote .quote{text-align:center;max-width:880px;margin:0 auto 48px}
+.slide.var-2 .l-pull-quote .quote-mark{text-align:center;margin:0 auto 32px;display:block}
+.slide.var-2 .l-pull-quote .attribution{text-align:center}
+.slide.var-3 .l-pull-quote .quote-mark{display:none}
+.slide.var-3 .l-pull-quote .quote{font-style:italic;font-weight:600;border-left:3px solid currentColor;padding-left:40px}
+.bg-navy .slide.var-3 .l-pull-quote .quote,.bg-verde-escuro .slide.var-3 .l-pull-quote .quote{border-left-color:var(--lima)}
+.bg-creme .slide.var-3 .l-pull-quote .quote,.bg-white .slide.var-3 .l-pull-quote .quote{border-left-color:var(--ferrugem)}
+.slide.var-3 .l-pull-quote .attribution{padding-left:43px;font-style:italic;letter-spacing:.06em}
+
+/* Stat-drop variations */
+.slide.var-2 .l-stat-drop .stat-big{font-weight:300;font-style:italic;letter-spacing:-.04em}
+.slide.var-3 .l-stat-drop .center{align-items:flex-start;text-align:left;padding-left:120px}
+.slide.var-3 .l-stat-drop .stat-eyebrow{text-align:left}
+.slide.var-3 .l-stat-drop .stat-big{text-align:left}
+.slide.var-3 .l-stat-drop .stat-context{text-align:left;max-width:580px}
+
+/* Editorial-split variations */
+.slide.var-2 .l-editorial-split{grid-template-columns:40% 60%}
+.slide.var-3 .l-editorial-split{grid-template-columns:60% 40%}
+
+/* Texto-corrido variations */
+.slide.var-2 .l-texto-corrido{justify-content:flex-start;padding-top:160px}
+.slide.var-2 .l-texto-corrido .eyebrow{margin-bottom:48px}
+.slide.var-3 .l-texto-corrido .lead{font-style:italic;font-weight:500}
+.slide.var-3 .l-texto-corrido .body{font-style:normal;padding-left:0;border-left:none}
+
+/* Index-card variations */
+.slide.var-2 .l-index-card .ic-number{font-size:calc(160px * var(--text-scale) * var(--ts-numero,1));flex-direction:column;align-items:flex-start;gap:8px}
+.slide.var-2 .l-index-card .ic-number-suffix{margin-bottom:0;font-size:calc(32px * var(--text-scale) * var(--ts-label,1))}
+.slide.var-3 .l-index-card{padding-top:140px}
+.slide.var-3 .l-index-card .ic-top{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:48px}
+.slide.var-3 .l-index-card .ic-number{font-size:calc(280px * var(--text-scale) * var(--ts-numero,1))}
 
 /* ============= LEGENDA ============= */
 .legenda{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:18px 22px;margin-top:6px}
@@ -383,6 +520,7 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 .swatch[data-c="verde-escuro"]{background:#1F3829}
 .swatch[data-c="verde-musk"]{background:#5A6D3E}
 .swatch[data-c="verde-sage"]{background:#A8B89B}
+.swatch[data-c="ferrugem"]{background:#C1441E}
 
 
 .gallery-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:10px}
@@ -391,6 +529,24 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
 .gallery-thumb{aspect-ratio:4/5;background:rgba(255,255,255,.05);border-radius:5px;background-size:cover;background-position:center;cursor:pointer;border:2px solid transparent;transition:all .15s;overflow:hidden;position:relative}
 .gallery-thumb:hover{border-color:var(--lima);transform:translateY(-1px)}
 .gallery-thumb.loading{background:repeating-linear-gradient(45deg,rgba(255,255,255,.04),rgba(255,255,255,.04) 10px,rgba(255,255,255,.08) 10px,rgba(255,255,255,.08) 20px)}
+
+
+.syntax-help{display:flex;flex-direction:column;gap:10px;margin-bottom:8px}
+.syntax-row{display:flex;align-items:center;gap:10px;font-size:12px}
+.syntax-row code{background:rgba(255,255,255,.08);padding:5px 9px;border-radius:5px;font-family:'Outfit',monospace;font-size:11px;color:#fff;font-weight:500;min-width:90px;text-align:center}
+.syntax-arrow{opacity:.4;font-weight:300}
+.syntax-example{font-size:14px;font-weight:500}
+.syntax-italic{font-style:italic;color:var(--ferrugem);font-weight:600}
+.syntax-tarja{font-style:italic;background:var(--lima);color:var(--navy);padding:0 8px;font-weight:600;display:inline-block;line-height:1.1}
+
+/* Field-level controls (hide button + color pips) */
+.field-block{position:relative}
+.field-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:#E8E4DC;font-family:inherit;font-size:11px;font-weight:500;padding:4px 8px;border-radius:5px;cursor:pointer;transition:all .15s;min-width:30px;height:24px;display:inline-flex;align-items:center;justify-content:center;line-height:1}
+.field-btn:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+.color-row{display:flex;gap:4px;margin-top:6px;flex-wrap:wrap}
+.color-pip{width:22px;height:22px;border-radius:5px;cursor:pointer;border:2px solid transparent;transition:all .15s;font-size:8px;font-weight:600;letter-spacing:.02em;color:#fff;display:inline-flex;align-items:center;justify-content:center;text-transform:lowercase;font-family:inherit;padding:0}
+.color-pip:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.color-pip.active{border-color:#fff;box-shadow:0 0 0 1px var(--lima)}
 
 /* ============= TOAST ============= */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);background:var(--lima);color:var(--navy);padding:14px 28px;border-radius:999px;font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;opacity:0;transition:all .3s cubic-bezier(.22,1,.36,1);pointer-events:none;z-index:9000;box-shadow:0 10px 30px rgba(0,0,0,.3)}
@@ -468,6 +624,7 @@ em.tarja, em[data-tarja]{background:var(--lima)!important;color:var(--navy)!impo
       <div class="app-tabs">
         <button class="app-tab active" data-tab="feed">Feed (1080×1350)</button>
         <button class="app-tab" data-tab="stories">Stories (1080×1920)</button>
+        <button class="app-tab" onclick="resetAllToOriginal()" style="margin-left:auto;background:transparent;color:#C1441E;border-color:rgba(193,68,30,.5)" title="Volta ao estado inicial dos 6 posts originais">↺ Restaurar 6 posts originais</button>
       </div>
     </div>
     <div class="tab-content active" id="tab-feed">
@@ -539,16 +696,21 @@ const UNSPLASH_GALLERY = {
 };
 
 
+// ====================== INITIAL DATA (for reset) ======================
+const INITIAL_POSTS_JSON = "[{\"id\": \"p1\", \"n\": 1, \"tag\": \"\ud83d\udfe9\", \"tipo\": \"Capa + CTA\", \"slides\": [{\"id\": \"s1\", \"layout\": \"manifesto\", \"bg\": \"navy\", \"data\": {\"headline\": \"Situa\u00e7\u00f5es cr\u00edticas n\u00e3o toleram *improviso*.\", \"footer\": \"PCM \u00b7 Professional Crisis Management\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"cta-final\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"Pra entender como funciona a forma\u00e7\u00e3o.\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"Se voc\u00ea trabalha com pacientes que podem escalar comportamento, voc\u00ea j\u00e1 sabe: tem um momento em que tudo muda r\u00e1pido.\\n\\nO ambiente muda. A press\u00e3o aumenta. E a decis\u00e3o precisa acontecer ali.\\n\\nN\u00e3o \u00e9 sobre teoria. \u00c9 sobre saber o que fazer quando n\u00e3o d\u00e1 mais pra improvisar.\\n\\nExiste uma forma\u00e7\u00e3o internacional em PCM (Professional Crisis Management) voltada exatamente pra isso.\\n\\n\ud83d\udcf2 Chama no direct pra entender como funciona a forma\u00e7\u00e3o.\"}, {\"id\": \"p2\", \"n\": 2, \"tag\": \"\ud83d\udfe6\", \"tipo\": \"Carrossel institucional\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-numero\", \"bg\": \"navy\", \"data\": {\"numero\": \"01\", \"label\": \"M\u00c9TODO SENTINELA\", \"headline\": \"Conduzir crise n\u00e3o \u00e9 *reagir melhor*.\", \"sub\": \"\u00c9 n\u00e3o chegar despreparado.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"texto-corrido\", \"bg\": \"white\", \"data\": {\"eyebrow\": \"DE ONDE NASCE\", \"lead\": \"O M\u00e9todo Sentinela nasce da *pr\u00e1tica*.\", \"body\": \"De ler o comportamento antes que ele escale. De decidir com crit\u00e9rio mesmo sob press\u00e3o. E de conduzir com dire\u00e7\u00e3o.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s3\", \"layout\": \"pull-quote\", \"bg\": \"creme\", \"data\": {\"quote\": \"Leitura. Crit\u00e9rio. Dire\u00e7\u00e3o.\", \"attribution\": \"Os tr\u00eas pilares\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s4\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"Nem sempre o problema est\u00e1 na crise.\\n\\nMuitas vezes, ele come\u00e7a antes, na forma como o comportamento \u00e9 (ou n\u00e3o) compreendido.\\n\\nO M\u00e9todo Sentinela nasce dessa necessidade: leitura, crit\u00e9rio e dire\u00e7\u00e3o. N\u00e3o como conceito, mas como pr\u00e1tica.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p3\", \"n\": 3, \"tag\": \"\ud83d\udfe8\", \"tipo\": \"Gr\u00e1fico SEM vs COM PCM\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-blocos\", \"bg\": \"split\", \"data\": {\"leftWord\": \"REAGIR\", \"rightWord\": \"CONDUZIR\", \"footer\": \"Qual lado voc\u00ea quer estar?\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"comparacao-x\", \"bg\": \"white\", \"data\": {\"leftTitle\": \"SEM PCM\", \"rightTitle\": \"COM PCM\", \"rows\": [[\"Situa\u00e7\u00e3o escala\", \"Escalada percebida antes\"], [\"Decis\u00e3o sob press\u00e3o\", \"Decis\u00e3o com crit\u00e9rio\"], [\"Rea\u00e7\u00e3o\", \"Condu\u00e7\u00e3o\"], [\"Ambiente desorganiza\", \"Ambiente \u00e9 conduzido\"]]}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s3\", \"layout\": \"manifesto\", \"bg\": \"creme\", \"data\": {\"headline\": \"N\u00e3o \u00e9 sobre *experi\u00eancia*.<br>\u00c9 sobre *m\u00e9todo*.\", \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s4\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"Na pr\u00e1tica, a diferen\u00e7a aparece r\u00e1pido.\\n\\nSem m\u00e9todo, tudo acontece sob press\u00e3o.\\nCom m\u00e9todo, existe leitura, crit\u00e9rio e dire\u00e7\u00e3o.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p4\", \"n\": 4, \"tag\": \"\ud83d\udfe6\", \"tipo\": \"Carrossel \u2014 O que \u00e9 PCM\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-numero\", \"bg\": \"navy\", \"data\": {\"numero\": \"PCM\", \"label\": \"PROFESSIONAL CRISIS MANAGEMENT\", \"headline\": \"O que \u00e9, na pr\u00e1tica.\", \"sub\": \"Arrasta para entender \u2192\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"texto-corrido\", \"bg\": \"white\", \"data\": {\"eyebrow\": \"DEFINI\u00c7\u00c3O\", \"lead\": \"Um sistema estruturado de gerenciamento de crises comportamentais.\", \"body\": \"Baseado em an\u00e1lise do comportamento, focado em *leitura*, *preven\u00e7\u00e3o* e *condu\u00e7\u00e3o* de situa\u00e7\u00f5es cr\u00edticas.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s3\", \"layout\": \"lista-numerada\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PRA QUEM \u00c9\", \"headline\": \"Profissionais que lidam com:\", \"items\": [\"Desregula\u00e7\u00e3o comportamental\", \"Agressividade\", \"Escalada de crise\"], \"footer\": \"Sa\u00fade, educa\u00e7\u00e3o e contextos cl\u00ednicos.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s4\", \"layout\": \"lista-numerada\", \"bg\": \"white\", \"data\": {\"eyebrow\": \"O QUE VOC\u00ca APRENDE\", \"headline\": \"Quatro entregas pr\u00e1ticas:\", \"items\": [\"Reconhecer a escalada antes da crise\", \"Reduzir a intensidade da situa\u00e7\u00e3o\", \"Agir com seguran\u00e7a e crit\u00e9rio\", \"Restabelecer o ambiente ap\u00f3s\"], \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s5\", \"layout\": \"lista-numerada\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"POR QUE IMPORTA\", \"headline\": \"O que muda na sua pr\u00e1tica:\", \"items\": [\"Mais seguran\u00e7a para todos\", \"Menos risco de escalada\", \"Mais clareza nas decis\u00f5es\", \"Mais confian\u00e7a na condu\u00e7\u00e3o\"], \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s6\", \"layout\": \"manifesto\", \"bg\": \"creme\", \"data\": {\"headline\": \"Forma\u00e7\u00e3o pr\u00e1tica.<br>Certifica\u00e7\u00e3o *internacional*.\", \"footer\": \"Pra quem sabe a import\u00e2ncia de conduzir com crit\u00e9rio.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s7\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"O PCM (Professional Crisis Management) \u00e9 um sistema estruturado para gerenciamento de crises comportamentais.\\n\\nNa pr\u00e1tica, ele ensina o que fazer antes, durante e ap\u00f3s situa\u00e7\u00f5es de escalada, com leitura, crit\u00e9rio e condu\u00e7\u00e3o.\\n\\nA forma\u00e7\u00e3o \u00e9 pr\u00e1tica, com certifica\u00e7\u00e3o internacional.\\n\\n\ud83d\udcf2 Garanta sua vaga na pr\u00f3xima turma.\"}, {\"id\": \"p5\", \"n\": 5, \"tag\": \"\ud83d\udfe9\", \"tipo\": \"\u00c2ncora visual\", \"slides\": [{\"id\": \"s1\", \"layout\": \"manifesto\", \"bg\": \"navy\", \"data\": {\"headline\": \"Crise n\u00e3o \u00e9 *improviso*.<br>\u00c9 *m\u00e9todo*.\", \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"cta-final\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"Na pr\u00e1tica, a diferen\u00e7a aparece r\u00e1pido.\\n\\nSem m\u00e9todo, o que sobra \u00e9 rea\u00e7\u00e3o.\\nCom m\u00e9todo, existe leitura, crit\u00e9rio e dire\u00e7\u00e3o.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p10\", \"n\": 10, \"tag\": \"\u2b1b\", \"tipo\": \"Sobre o instrutor\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-numero\", \"bg\": \"creme\", \"data\": {\"numero\": \"L.A.\", \"label\": \"SOBRE O INSTRUTOR\", \"headline\": \"Quem te ensina \u00e9 quem *j\u00e1 esteve l\u00e1*.\", \"sub\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s2\", \"layout\": \"instrutor-card\", \"bg\": \"white\", \"data\": {\"nome\": \"Luiz Augusto\", \"papel\": \"Instrutor \u00b7 M\u00e9todo Sentinela\", \"bio\": \"Atua com comportamento em contextos cl\u00ednicos e educacionais. Formado em *An\u00e1lise do Comportamento (ABA)*, com experi\u00eancia na gest\u00e3o de servi\u00e7os voltados ao atendimento de crian\u00e7as e adolescentes neurodivergentes.\", \"bio2\": \"Como praticante e professor de *artes marciais*, traz compreens\u00e3o aplicada de corpo, limite e controle.\", \"creds\": [\"An\u00e1lise do Comportamento\", \"Gest\u00e3o cl\u00ednica\", \"Neurodiverg\u00eancia\", \"Artes marciais\"]}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"s3\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Me chama no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\"}], \"legenda\": \"Quem te ensina \u00e9 quem j\u00e1 esteve l\u00e1.\\n\\nLuiz Augusto atua com comportamento em contextos cl\u00ednicos e educacionais.\\n\\n\ud83d\udcf2 Me chama no direct para conhecer a forma\u00e7\u00e3o.\"}]";
+const INITIAL_STORIES_JSON = "[{\"id\": \"st1\", \"n\": 1, \"layout\": \"story-manifesto\", \"bg\": \"navy\", \"data\": {\"label\": \"FORMA\u00c7\u00c3O PCM\", \"headline\": \"Crise n\u00e3o tolera *improviso*.\", \"sub\": \"Pr\u00f3xima turma aberta\", \"cta\": \"Arrasta pra cima\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st2\", \"n\": 2, \"layout\": \"story-manifesto\", \"bg\": \"creme\", \"data\": {\"label\": \"M\u00c9TODO SENTINELA\", \"headline\": \"Crise n\u00e3o \u00e9 *improviso*.<br>\u00c9 *m\u00e9todo*.\", \"sub\": \"\", \"cta\": \"Saiba mais\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st3\", \"n\": 3, \"layout\": \"story-manifesto\", \"bg\": \"navy\", \"data\": {\"label\": \"SEM PCM vs COM PCM\", \"headline\": \"REAGIR<br>ou *CONDUZIR*?\", \"sub\": \"PCM \u00e9 o que separa um do outro.\", \"cta\": \"Conhece o m\u00e9todo\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st4\", \"n\": 4, \"layout\": \"story-manifesto\", \"bg\": \"white\", \"data\": {\"label\": \"QUEM TE ENSINA\", \"headline\": \"Quem te ensina \u00e9 quem *j\u00e1 esteve l\u00e1*.\", \"sub\": \"Luiz Augusto \u00b7 Instrutor PCM\", \"cta\": \"Sobre a forma\u00e7\u00e3o\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}]";
+
 // ====================== STATE ======================
 let STATE = {
-  posts: JSON.parse("[{\"id\": \"p1\", \"n\": 1, \"tag\": \"\ud83d\udfe9\", \"tipo\": \"Capa \u00fanica + CTA\", \"slides\": [{\"id\": \"s1\", \"layout\": \"manifesto\", \"bg\": \"navy\", \"data\": {\"headline\": \"Situa\u00e7\u00f5es cr\u00edticas n\u00e3o toleram **improviso**.\", \"footer\": \"PCM \u00b7 Professional Crisis Management\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"cta-final\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Vamos conversar no *direct*.\", \"sub\": \"Pra entender como funciona a forma\u00e7\u00e3o.\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"Se voc\u00ea trabalha com pacientes que podem escalar comportamento, voc\u00ea j\u00e1 sabe: tem um momento em que tudo muda r\u00e1pido.\\n\\nO ambiente muda. A press\u00e3o aumenta. E a decis\u00e3o precisa acontecer ali.\\n\\nN\u00e3o \u00e9 sobre teoria. \u00c9 sobre saber o que fazer quando n\u00e3o d\u00e1 mais pra improvisar.\\n\\nExiste uma forma\u00e7\u00e3o internacional em PCM (Professional Crisis Management) voltada exatamente pra isso.\\n\\n\ud83d\udcf2 Chama no direct pra entender como funciona a forma\u00e7\u00e3o.\"}, {\"id\": \"p2\", \"n\": 2, \"tag\": \"\ud83d\udfe6\", \"tipo\": \"Carrossel institucional\", \"slides\": [{\"id\": \"s1\", \"layout\": \"editorial-split\", \"bg\": \"navy\", \"data\": {\"tag\": \"M\u00c9TODO SENTINELA\", \"quote\": \"N\u00e3o \u00e9 sobre reagir melhor. \u00c9 sobre n\u00e3o chegar despreparado.\", \"metaLeft\": \"01\", \"metaCenter\": \"INSTITUCIONAL\", \"metaRight\": \"04\", \"headline\": \"Onde o m\u00e9todo se diferencia.\", \"body\": \"Conduzir crise n\u00e3o \u00e9 uma habilidade improvisada. \u00c9 uma *pr\u00e1tica estruturada* com leitura, crit\u00e9rio e dire\u00e7\u00e3o.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"index-card\", \"bg\": \"creme\", \"data\": {\"capitulo\": \"FUNDAMENTO\", \"pageNum\": \"02 / 04\", \"numero\": \"01\", \"numSuffix\": \"leitura\", \"title\": \"Antes da crise, a leitura.\", \"body\": \"Reconhecer a escalada de comportamento *antes* dela acontecer. O primeiro pilar.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s3\", \"layout\": \"index-card\", \"bg\": \"white\", \"data\": {\"capitulo\": \"FUNDAMENTO\", \"pageNum\": \"03 / 04\", \"numero\": \"02\", \"numSuffix\": \"crit\u00e9rio\", \"title\": \"Decis\u00e3o sob press\u00e3o, com m\u00e9todo.\", \"body\": \"N\u00e3o improvisar quando o ambiente exige resposta. O segundo pilar.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s4\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Conhece o m\u00e9todo.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"Nem sempre o problema est\u00e1 na crise.\\n\\nMuitas vezes, ele come\u00e7a antes, na forma como o comportamento \u00e9 (ou n\u00e3o) compreendido.\\n\\nO M\u00e9todo Sentinela nasce dessa necessidade: leitura, crit\u00e9rio e dire\u00e7\u00e3o. N\u00e3o como conceito, mas como pr\u00e1tica.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p3\", \"n\": 3, \"tag\": \"\ud83d\udfe8\", \"tipo\": \"Gr\u00e1fico SEM vs COM PCM\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-blocos\", \"bg\": \"split\", \"data\": {\"leftWord\": \"REAGIR\", \"rightWord\": \"CONDUZIR\", \"footer\": \"Qual lado voc\u00ea quer estar?\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"comparacao-x\", \"bg\": \"white\", \"data\": {\"leftTitle\": \"SEM PCM\", \"rightTitle\": \"COM PCM\", \"rows\": [[\"Situa\u00e7\u00e3o escala\", \"Escalada percebida antes\"], [\"Decis\u00e3o sob press\u00e3o\", \"Decis\u00e3o com crit\u00e9rio\"], [\"Rea\u00e7\u00e3o\", \"Condu\u00e7\u00e3o\"], [\"Ambiente desorganiza\", \"Ambiente \u00e9 conduzido\"]]}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s3\", \"layout\": \"stat-drop\", \"bg\": \"navy\", \"data\": {\"topLeft\": \"M\u00c9TODO SENTINELA\", \"topRight\": \"03 / 04\", \"eyebrow\": \"O QUE MUDA\", \"stat\": \"100%\", \"context\": \"Diferen\u00e7a entre reagir e *conduzir* uma situa\u00e7\u00e3o cr\u00edtica.\", \"bottomBar\": \"\u00b7 LEITURA \u00b7 CRIT\u00c9RIO \u00b7 DIRE\u00c7\u00c3O\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s4\", \"layout\": \"cta-final\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Conhece o m\u00e9todo.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"Na pr\u00e1tica, a diferen\u00e7a aparece r\u00e1pido.\\n\\nSem m\u00e9todo, tudo acontece sob press\u00e3o.\\nCom m\u00e9todo, existe leitura, crit\u00e9rio e dire\u00e7\u00e3o.\\n\\nE isso muda completamente a forma de conduzir.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p4\", \"n\": 4, \"tag\": \"\ud83d\udfe6\", \"tipo\": \"Carrossel longo \u2014 O que \u00e9 PCM\", \"slides\": [{\"id\": \"s1\", \"layout\": \"capa-numero\", \"bg\": \"navy\", \"data\": {\"numero\": \"PCM\", \"label\": \"PROFESSIONAL CRISIS MANAGEMENT\", \"headline\": \"O que \u00e9, na pr\u00e1tica.\", \"sub\": \"Arrasta para entender \u2192\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"texto-corrido\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"DEFINI\u00c7\u00c3O\", \"lead\": \"Sistema estruturado de gerenciamento de crises comportamentais.\", \"body\": \"Baseado em an\u00e1lise do comportamento, focado em *leitura*, *preven\u00e7\u00e3o* e *condu\u00e7\u00e3o* de situa\u00e7\u00f5es cr\u00edticas.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s3\", \"layout\": \"index-card\", \"bg\": \"white\", \"data\": {\"capitulo\": \"PRA QUEM \u00c9\", \"pageNum\": \"03 / 07\", \"numero\": \"01\", \"numSuffix\": \"profissionais\", \"title\": \"Quem lida com escalada comportamental.\", \"body\": \"Sa\u00fade, educa\u00e7\u00e3o, contextos cl\u00ednicos. Profissionais que enfrentam *desregula\u00e7\u00e3o*, agressividade e crise.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s4\", \"layout\": \"lista-numerada\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"O QUE VOC\u00ca APRENDE\", \"headline\": \"Quatro entregas pr\u00e1ticas:\", \"items\": [\"Reconhecer a escalada antes da crise\", \"Reduzir a intensidade da situa\u00e7\u00e3o\", \"Agir com seguran\u00e7a e crit\u00e9rio\", \"Restabelecer o ambiente ap\u00f3s\"], \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s5\", \"layout\": \"stat-drop\", \"bg\": \"verde-escuro\", \"data\": {\"topLeft\": \"FORMA\u00c7\u00c3O PCM\", \"topRight\": \"05 / 07\", \"eyebrow\": \"CERTIFICA\u00c7\u00c3O\", \"stat\": \"22h\", \"context\": \"Forma\u00e7\u00e3o presencial com certifica\u00e7\u00e3o *internacional* PCM.\", \"bottomBar\": \"\u00b7 PR\u00c1TICA \u00b7 CRIT\u00c9RIO \u00b7 CONDU\u00c7\u00c3O\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s6\", \"layout\": \"manifesto\", \"bg\": \"creme\", \"data\": {\"headline\": \"Pra quem sabe a import\u00e2ncia de **conduzir com crit\u00e9rio**.\", \"footer\": \"\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s7\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMA TURMA\", \"headline\": \"Garante sua vaga no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"O PCM (Professional Crisis Management) \u00e9 um sistema estruturado para gerenciamento de crises comportamentais.\\n\\nNa pr\u00e1tica, ele ensina o que fazer antes, durante e ap\u00f3s situa\u00e7\u00f5es de escalada, com leitura, crit\u00e9rio e condu\u00e7\u00e3o.\\n\\nA forma\u00e7\u00e3o \u00e9 pr\u00e1tica, com certifica\u00e7\u00e3o internacional.\\n\\n\ud83d\udcf2 Garanta sua vaga na pr\u00f3xima turma.\"}, {\"id\": \"p5\", \"n\": 5, \"tag\": \"\ud83d\udfe9\", \"tipo\": \"\u00c2ncora visual\", \"slides\": [{\"id\": \"s1\", \"layout\": \"editorial-split\", \"bg\": \"navy\", \"data\": {\"tag\": \"M\u00c9TODO SENTINELA\", \"quote\": \"Sem m\u00e9todo, o que sobra \u00e9 rea\u00e7\u00e3o.\", \"metaLeft\": \"\u00b7\", \"metaCenter\": \"ANCORA\", \"metaRight\": \"\u00b7\", \"headline\": \"Crise n\u00e3o \u00e9 improviso. \u00c9 **m\u00e9todo**.\", \"body\": \"Na pr\u00e1tica, a diferen\u00e7a aparece r\u00e1pido. Com m\u00e9todo, existe leitura, crit\u00e9rio e dire\u00e7\u00e3o.\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"cta-final\", \"bg\": \"creme\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Vamos conversar no *direct*.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"Na pr\u00e1tica, a diferen\u00e7a aparece r\u00e1pido.\\n\\nSem m\u00e9todo, o que sobra \u00e9 rea\u00e7\u00e3o.\\nCom m\u00e9todo, existe leitura, crit\u00e9rio e dire\u00e7\u00e3o.\\n\\n\ud83d\udcf2 Me chama no direct para mais informa\u00e7\u00f5es.\"}, {\"id\": \"p10\", \"n\": 10, \"tag\": \"\u2b1b\", \"tipo\": \"Sobre o instrutor\", \"slides\": [{\"id\": \"s1\", \"layout\": \"stat-drop\", \"bg\": \"creme\", \"data\": {\"topLeft\": \"M\u00c9TODO SENTINELA\", \"topRight\": \"01 / 03\", \"eyebrow\": \"QUEM TE ENSINA\", \"stat\": \"L.A.\", \"context\": \"Quem te ensina \u00e9 quem *j\u00e1 esteve l\u00e1*.\", \"bottomBar\": \"\u00b7 LUIZ AUGUSTO \u00b7 INSTRUTOR PCM\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s2\", \"layout\": \"instrutor-card\", \"bg\": \"white\", \"data\": {\"nome\": \"Luiz Augusto\", \"papel\": \"Instrutor \u00b7 M\u00e9todo Sentinela\", \"bio\": \"Atua com comportamento em contextos cl\u00ednicos e educacionais. Formado em *An\u00e1lise do Comportamento (ABA)*, com experi\u00eancia na gest\u00e3o de servi\u00e7os voltados ao atendimento de crian\u00e7as e adolescentes neurodivergentes.\", \"bio2\": \"Como praticante e professor de *artes marciais*, traz compreens\u00e3o aplicada de corpo, limite e controle.\", \"creds\": [\"An\u00e1lise do Comportamento\", \"Gest\u00e3o cl\u00ednica\", \"Neurodiverg\u00eancia\", \"Artes marciais\"]}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\", \"textSizes\": {}}, {\"id\": \"s3\", \"layout\": \"cta-final\", \"bg\": \"navy\", \"data\": {\"eyebrow\": \"PR\u00d3XIMO PASSO\", \"headline\": \"Conhece a forma\u00e7\u00e3o.\", \"sub\": \"\", \"btnText\": \"@ometodosentinela\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"center\", \"sigPos\": \"bottom\", \"textSizes\": {}}], \"legenda\": \"Quem te ensina \u00e9 quem j\u00e1 esteve l\u00e1.\\n\\nLuiz Augusto atua com comportamento em contextos cl\u00ednicos e educacionais.\\n\\n\ud83d\udcf2 Me chama no direct para conhecer a forma\u00e7\u00e3o.\"}]"),
-  stories: JSON.parse("[{\"id\": \"st1\", \"n\": 1, \"layout\": \"story-manifesto\", \"bg\": \"navy\", \"data\": {\"label\": \"FORMA\u00c7\u00c3O PCM\", \"headline\": \"Crise n\u00e3o tolera *improviso*.\", \"sub\": \"Pr\u00f3xima turma aberta\", \"cta\": \"Arrasta pra cima\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st2\", \"n\": 2, \"layout\": \"story-manifesto\", \"bg\": \"creme\", \"data\": {\"label\": \"M\u00c9TODO SENTINELA\", \"headline\": \"Crise n\u00e3o \u00e9 *improviso*.<br>\u00c9 *m\u00e9todo*.\", \"sub\": \"\", \"cta\": \"Saiba mais\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st3\", \"n\": 3, \"layout\": \"story-manifesto\", \"bg\": \"navy\", \"data\": {\"label\": \"SEM PCM vs COM PCM\", \"headline\": \"REAGIR<br>ou *CONDUZIR*?\", \"sub\": \"PCM \u00e9 o que separa um do outro.\", \"cta\": \"Conhece o m\u00e9todo\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}, {\"id\": \"st4\", \"n\": 4, \"layout\": \"story-manifesto\", \"bg\": \"white\", \"data\": {\"label\": \"QUEM TE ENSINA\", \"headline\": \"Quem te ensina \u00e9 quem *j\u00e1 esteve l\u00e1*.\", \"sub\": \"Luiz Augusto \u00b7 Instrutor PCM\", \"cta\": \"Sobre a forma\u00e7\u00e3o\"}, \"photo\": null, \"photoY\": 50, \"darken\": 50, \"textScale\": 1.0, \"align\": \"left\", \"sigPos\": \"bottom\"}]"),
+  posts: JSON.parse(INITIAL_POSTS_JSON),
+  stories: JSON.parse(INITIAL_STORIES_JSON),
   selectedKey: null,  // 'feed:postId:slideId' or 'story:storyId'
   tab: 'feed'
 };
 
 // localStorage persistence
-const STORAGE_KEY = 'sentinela_postmaker_v4';
+const STORAGE_KEY = 'sentinela_postmaker_v8';
+// Old keys: sentinela_postmaker_v4. Bumping invalidates stale states with old bugs.
 function saveState(){
   try {
     // Strip large photo data URLs before saving? They can be big.
@@ -569,19 +731,41 @@ function loadState(){
 
 // ====================== AVAILABLE LAYOUTS (for switcher) ======================
 const FEED_LAYOUTS = [
-  {id:'manifesto', label:'Manifesto', desc:'Frase principal'},
-  {id:'editorial-split', label:'Editorial Split', desc:'Foto/cor + texto'},
+  // BÁSICOS
+  {id:'manifesto', label:'Manifesto', desc:'Frase principal grande'},
+  {id:'centered', label:'Centrado', desc:'Headline + body centralizado'},
+  {id:'cta-final', label:'CTA Final', desc:'Botão final do carrossel'},
+  // EDITORIAL
+  {id:'editorial-split', label:'Editorial Split', desc:'Foto/cor 50% + texto 50%'},
   {id:'index-card', label:'Index Card', desc:'Capítulo numerado'},
+  {id:'side-photo', label:'Foto Lateral', desc:'Foto esquerda, texto direita'},
+  {id:'frame', label:'Moldura', desc:'Foto centrada, texto em volta'},
+  // DESTAQUE
   {id:'stat-drop', label:'Stat Drop', desc:'Número/palavra grande'},
-  {id:'capa-numero', label:'Capa Número', desc:'Sigla grande'},
+  {id:'capa-numero', label:'Capa Número', desc:'Sigla/número gigante'},
   {id:'capa-blocos', label:'Blocos', desc:'Split colorblock'},
+  // COMPARAÇÃO E LISTAS
   {id:'comparacao-x', label:'Comparação X', desc:'SEM vs COM'},
   {id:'lista-numerada', label:'Lista', desc:'Itens numerados'},
-  {id:'pull-quote', label:'Pull Quote', desc:'Citação'},
+  // CITAÇÃO E TEXTO
+  {id:'photo-quote', label:'Citação na Foto', desc:'Citação sobre foto'},
+  {id:'pull-quote', label:'Pull Quote', desc:'Citação editorial'},
   {id:'texto-corrido', label:'Texto Corrido', desc:'Lead + body'},
-  {id:'cta-final', label:'CTA Final', desc:'Botão final'},
+  // ESPECIAIS
   {id:'instrutor-card', label:'Instrutor', desc:'Foto + bio'},
 ];
+
+const LAYOUT_VARIATIONS = {
+  'manifesto':       ['Esquerda', 'Centrado', 'Italic'],
+  'cta-final':       ['Centro', 'Esquerda', 'Com borda'],
+  'capa-numero':     ['Stack', 'Centrado', 'Lado a lado'],
+  'lista-numerada':  ['Hairline', 'Números grandes', 'Sem números'],
+  'pull-quote':      ['Padrão', 'Centrado', 'Bordada'],
+  'stat-drop':       ['Padrão', 'Italic light', 'Esquerda'],
+  'editorial-split': ['50/50', '40/60', '60/40'],
+  'texto-corrido':   ['Centro', 'Topo', 'Italic'],
+  'index-card':      ['Inline', 'Stack', 'Largo']
+};
 
 const DEFAULT_DATA_FOR = {
   'manifesto': {headline:'Sua frase aqui.', footer:''},
@@ -593,15 +777,18 @@ const DEFAULT_DATA_FOR = {
   'texto-corrido': {eyebrow:'EYEBROW', lead:'Lead em destaque.', body:'Corpo do texto aqui, mais leve, narrativo.'},
   'cta-final': {eyebrow:'PRÓXIMO PASSO', headline:'Me chama no *direct*.', sub:'', btnText:'@ometodosentinela'},
   'instrutor-card': {nome:'Nome', papel:'Papel', bio:'Bio.', bio2:'', creds:['Cred 1','Cred 2']},
-  'editorial-split': {tag:'MÉTODO SENTINELA', quote:'Pull quote elegante.', metaLeft:'01', metaCenter:'CAPÍTULO', metaRight:'04', headline:'Headline editorial.', body:'Corpo de texto editorial.'},
+  'editorial-split': {tag:'MÉTODO SENTINELA', quote:'Pull quote elegante.', metaLeft:'01', metaCenter:'CAPÍTULO', metaRight:'04', headline:'Headline editorial.', body:'Corpo editorial.'},
   'stat-drop': {topLeft:'MÉTODO SENTINELA', topRight:'01 / 04', eyebrow:'EM NÚMEROS', stat:'97%', context:'Contexto editorial.', bottomBar:'· PCM · PROFESSIONAL CRISIS MANAGEMENT'},
   'index-card': {capitulo:'PARTE 01', pageNum:'01 / 04', numero:'01', numSuffix:'leitura', title:'Título de capítulo.', body:'Corpo do texto.'},
+  'photo-quote': {quote:'Crise não é improviso. É *método*.', attribution:'MÉTODO SENTINELA'},
+  'side-photo': {photoTag:'MÉTODO SENTINELA', eyebrow:'INSTITUCIONAL', headline:'Headline editorial.', body:'Corpo editorial.'},
+  'frame': {eyebrow:'MÉTODO SENTINELA', headline:'Sua frase aqui.', sub:'Subtítulo opcional.'},
+  'centered': {eyebrow:'MÉTODO SENTINELA', headline:'Headline centrado.', body:'Texto de apoio centrado.'},
 };
 
 // ====================== ASTERISK ITALIC ======================
 function asteriskToItalic(text){
   if (!text) return text;
-  // **palavra** = tarja lima (loud); *palavra* = italic accent (subtle)
   text = text.replace(/\*\*([^*\n]+)\*\*/g, '<em data-tarja="1">$1</em>');
   text = text.replace(/\*([^*\n]+)\*/g, '<em>$1</em>');
   return text;
@@ -612,6 +799,111 @@ function italicToAsterisk(html){
   html = html.replace(/<em>([^<]+)<\/em>/g, '*$1*');
   return html;
 }
+
+// ====================== ORNAMENTS (decorative backgrounds) ======================
+// Auto-color: lima on dark bgs, navy on light bgs, lima on photo
+function ornamentColor(bg, hasPhoto){
+  if (hasPhoto) return '#CBD12E';
+  const dark = ['navy','grafite','verde-escuro','verde-musk','ferrugem'];
+  return dark.includes(bg) ? '#CBD12E' : '#002B5C';
+}
+function renderOrnament(kind, bg, hasPhoto){
+  if (!kind || kind === 'none') return '';
+  const c = ornamentColor(bg, hasPhoto);
+  let svg = '';
+  switch(kind){
+    case 'dots':
+      // Diagonal dot field
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id="op-dots" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+          <circle cx="30" cy="30" r="3" fill="${c}"/>
+        </pattern></defs>
+        <rect width="1080" height="1350" fill="url(#op-dots)"/>
+      </svg>`;
+      break;
+    case 'grid':
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id="op-grid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+          <path d="M 80 0 L 0 0 0 80" fill="none" stroke="${c}" stroke-width="1.2"/>
+        </pattern></defs>
+        <rect width="1080" height="1350" fill="url(#op-grid)"/>
+      </svg>`;
+      break;
+    case 'lines':
+      // Diagonal hatch
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id="op-lines" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+          <line x1="0" y1="0" x2="0" y2="40" stroke="${c}" stroke-width="1.5"/>
+        </pattern></defs>
+        <rect width="1080" height="1350" fill="url(#op-lines)"/>
+      </svg>`;
+      break;
+    case 'circles':
+      // Concentric circles in corners
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="${c}" stroke-width="2">
+          <circle cx="-50" cy="-50" r="180"/><circle cx="-50" cy="-50" r="280"/><circle cx="-50" cy="-50" r="380"/>
+          <circle cx="1130" cy="1400" r="180"/><circle cx="1130" cy="1400" r="280"/><circle cx="1130" cy="1400" r="380"/>
+        </g>
+      </svg>`;
+      break;
+    case 'crosshatch':
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <defs><pattern id="op-cross" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+          <path d="M 0 25 L 50 25 M 25 0 L 25 50" stroke="${c}" stroke-width="1" fill="none"/>
+        </pattern></defs>
+        <rect width="1080" height="1350" fill="url(#op-cross)"/>
+      </svg>`;
+      break;
+    case 'waves':
+      // Horizontal wavy lines
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="${c}" stroke-width="2">
+          ${Array.from({length:14}).map((_,i)=>{
+            const y = 100 + i*100;
+            return `<path d="M 0 ${y} Q 270 ${y-30} 540 ${y} T 1080 ${y}"/>`;
+          }).join('')}
+        </g>
+      </svg>`;
+      break;
+    case 'frame':
+      // Editorial border frame with corner marks
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="${c}" stroke-width="2">
+          <rect x="40" y="40" width="1000" height="1270"/>
+          <line x1="40" y1="120" x2="1040" y2="120"/>
+          <line x1="40" y1="1230" x2="1040" y2="1230"/>
+        </g>
+        <g fill="${c}">
+          <circle cx="40" cy="40" r="6"/><circle cx="1040" cy="40" r="6"/>
+          <circle cx="40" cy="1310" r="6"/><circle cx="1040" cy="1310" r="6"/>
+        </g>
+      </svg>`;
+      break;
+    case 'arch':
+      // Big arch / cathedral shape
+      svg = `<svg viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="${c}" stroke-width="3">
+          <path d="M 140 1350 L 140 540 Q 540 140 940 540 L 940 1350"/>
+          <path d="M 240 1350 L 240 600 Q 540 280 840 600 L 840 1350"/>
+          <path d="M 340 1350 L 340 660 Q 540 420 740 660 L 740 1350"/>
+        </g>
+      </svg>`;
+      break;
+  }
+  return `<div class="slide-ornament" data-ornament="${kind}">${svg}</div>`;
+}
+const ORNAMENT_OPTIONS = [
+  {id:'none', label:'Sem'},
+  {id:'dots', label:'Pontos'},
+  {id:'grid', label:'Grid'},
+  {id:'lines', label:'Linhas'},
+  {id:'crosshatch', label:'Cruzado'},
+  {id:'circles', label:'Círculos'},
+  {id:'waves', label:'Ondas'},
+  {id:'frame', label:'Moldura'},
+  {id:'arch', label:'Arcos'}
+];
 
 // ====================== RENDERERS ======================
 const root = document.getElementById('feed-root');
@@ -643,11 +935,16 @@ function getPost(postId){
 
 function renderSlideInner(slide, isStory){
   const d = slide.data || {};
-  const sigBlock = `<div class="slide-foot ${slide.sigPos==='top'?'sig-top':''} ${slide.sigPos==='hidden'?'sig-hidden':''}"><img src="${NAVY_LOGO}" alt="Método Sentinela" class="slide-logo"><span class="slide-foot-text" data-field="sigText" contenteditable="true">@ometodosentinela</span></div>`;
+  // Inline filter on logo for dark backgrounds (cascade-proof)
+  const darkBgs = ['navy','grafite','verde-escuro','verde-musk','ferrugem'];
+  const lightBgs = ['creme','cremesoft','white','verde-sage'];
+  const needsInvert = darkBgs.includes(slide.bg) || !!slide.photo;
+  const logoFilter = needsInvert ? 'filter:brightness(0) invert(1)' : '';
+  const sigBlock = `<div class="slide-foot ${slide.sigPos==='top'?'sig-top':''} ${slide.sigPos==='hidden'?'sig-hidden':''}"><img src="${NAVY_LOGO}" alt="Método Sentinela" class="slide-logo" style="${logoFilter}"><span class="slide-foot-text" data-field="sigText" contenteditable="true">@ometodosentinela</span></div>`;
   
   // Photo background
   const photoBlock = slide.photo 
-    ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:center ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` 
+    ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:${slide.photoX??50}% ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` 
     : '';
   
   let inner = '';
@@ -662,20 +959,20 @@ function renderSlideInner(slide, isStory){
       const numClass = (d.numero||'').length > 3 ? 'small' : '';
       inner = `<div class="slide-mark">S</div><div class="l-capa-numero">
         <div>
-          <div class="label" data-field="label" contenteditable="true">${d.label||''}</div>
+          <div class="label" data-field="label" contenteditable="true">${asteriskToItalic(d.label||'')}</div>
           <div class="numero ${numClass}" data-field="numero" contenteditable="true">${d.numero||'01'}</div>
         </div>
         <div>
           <h2 class="headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'')}</h2>
-          ${d.sub ? `<p class="sub" data-field="sub" contenteditable="true">${d.sub}</p>` : `<p class="sub" data-field="sub" contenteditable="true" style="opacity:.4">[sub opcional]</p>`}
+          ${d.sub ? `<p class="sub" data-field="sub" contenteditable="true">${asteriskToItalic(d.sub)}</p>` : `<p class="sub" data-field="sub" contenteditable="true" style="opacity:.4">[sub opcional]</p>`}
         </div>
       </div>${sigBlock}`;
       break;
     case 'capa-blocos':
       inner = `<div class="l-capa-blocos">
-        <div class="block block-left"><div class="big-word" data-field="leftWord" contenteditable="true">${d.leftWord||''}</div></div>
-        <div class="block block-right"><div class="big-word" data-field="rightWord" contenteditable="true">${d.rightWord||''}</div></div>
-        ${d.footer ? `<div class="foot-line" data-field="footer" contenteditable="true">${d.footer}</div>` : ''}
+        <div class="block block-left"><div class="big-word" data-field="leftWord" contenteditable="true">${asteriskToItalic(d.leftWord||'')}</div></div>
+        <div class="block block-right"><div class="big-word" data-field="rightWord" contenteditable="true">${asteriskToItalic(d.rightWord||'')}</div></div>
+        ${d.footer ? `<div class="foot-line" data-field="footer" contenteditable="true">${asteriskToItalic(d.footer)}</div>` : ''}
       </div>${sigBlock}`;
       break;
     case 'comparacao-x':
@@ -730,7 +1027,7 @@ function renderSlideInner(slide, isStory){
       </div>${sigBlock}`;
       break;
     case 'instrutor-card':
-      const photoStyle = slide.photo ? `background-image:url('${slide.photo}');background-position:center ${slide.photoY}%` : '';
+      const photoStyle = slide.photo ? `background-image:url('${slide.photo}');background-position:${slide.photoX??50}% ${slide.photoY}%` : '';
       inner = `<div class="l-instrutor-card">
         <div class="top">
           <div class="photo" style="${photoStyle}"><div class="photo-tag" data-field="photoTag" contenteditable="true">QUEM TE ENSINA</div></div>
@@ -746,17 +1043,17 @@ function renderSlideInner(slide, isStory){
         </div>
       </div>${sigBlock}`;
       break;
-    case 'editorial-split':
-      // Photo or color block left, text panel right
-      const slPhoto = slide.photo ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:center ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` : '';
-      // For this layout, the left panel uses the photo if present, OR the navy/dark bg
+        case 'editorial-split':
+      const slPhoto = slide.photo 
+        ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:${slide.photoX??50}% ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` 
+        : '';
       inner = `<div class="l-editorial-split">
         <div class="panel-left">
           ${slide.photo ? '' : '<div class="slide-mark">S</div>'}
           ${slPhoto}
           <div class="pl-content">
             <div class="pl-tag" data-field="tag" contenteditable="true">${d.tag||'MÉTODO SENTINELA'}</div>
-            <div class="pl-quote" data-field="quote" contenteditable="true">${asteriskToItalic(d.quote||'Pull quote elegante aqui.')}</div>
+            <div class="pl-quote" data-field="quote" contenteditable="true">${asteriskToItalic(d.quote||'Pull quote elegante.')}</div>
           </div>
         </div>
         <div class="panel-right bg-${slide.bg}-side">
@@ -766,11 +1063,10 @@ function renderSlideInner(slide, isStory){
             <span data-field="metaRight" contenteditable="true">${d.metaRight||'04'}</span>
           </div>
           <h2 class="er-headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'Headline editorial.')}</h2>
-          <p class="er-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Corpo de texto editorial, leve, com hierarquia delicada e respiro.')}</p>
+          <p class="er-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Corpo editorial leve.')}</p>
         </div>
       </div>${sigBlock}`;
-      // For this layout, skip the outer photo block (handled inside)
-      return `<div class="slide-content-wrap">${inner}</div>`;
+      return `${renderOrnament(slide.ornament, slide.bg, !!slide.photo)}<div class="slide-content-wrap">${inner}</div>`;
     case 'stat-drop':
       inner = `<div class="slide-mark">S</div><div class="l-stat-drop">
         <div class="top-bar">
@@ -780,7 +1076,7 @@ function renderSlideInner(slide, isStory){
         <div class="center">
           <div class="stat-eyebrow" data-field="eyebrow" contenteditable="true">${d.eyebrow||'EM NÚMEROS'}</div>
           <div class="stat-big" data-field="stat" contenteditable="true">${d.stat||'97%'}</div>
-          <p class="stat-context" data-field="context" contenteditable="true">${asteriskToItalic(d.context||'É o que separa profissionais que *reagem* dos que conduzem com método.')}</p>
+          <p class="stat-context" data-field="context" contenteditable="true">${asteriskToItalic(d.context||'Contexto editorial.')}</p>
         </div>
         <div class="bottom-bar" data-field="bottomBar" contenteditable="true">${d.bottomBar||'· PCM · PROFESSIONAL CRISIS MANAGEMENT'}</div>
       </div>${sigBlock}`;
@@ -789,15 +1085,60 @@ function renderSlideInner(slide, isStory){
       inner = `<div class="l-index-card">
         <div class="ic-top">
           <span data-field="capitulo" contenteditable="true">${d.capitulo||'PARTE 01'}</span>
-          <span class="ic-pn" data-field="pageNum" contenteditable="true">${d.pageNum||'01 / 04'}</span>
+          <span data-field="pageNum" contenteditable="true">${d.pageNum||'01 / 04'}</span>
         </div>
         <div class="ic-number">
           <span data-field="numero" contenteditable="true">${d.numero||'01'}</span>
           <span class="ic-number-suffix" data-field="numSuffix" contenteditable="true">${d.numSuffix||'leitura'}</span>
         </div>
         <div class="ic-rule"></div>
-        <h2 class="ic-title" data-field="title" contenteditable="true">${asteriskToItalic(d.title||'Antes da crise, a leitura.')}</h2>
-        <p class="ic-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Reconhecer a escalada de comportamento *antes* dela acontecer. Esse é o primeiro pilar do método.')}</p>
+        <h2 class="ic-title" data-field="title" contenteditable="true">${asteriskToItalic(d.title||'Título do capítulo.')}</h2>
+        <p class="ic-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Corpo do texto.')}</p>
+      </div>${sigBlock}`;
+      break;
+    case 'photo-quote':
+      const pqPhoto = slide.photo 
+        ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:${slide.photoX??50}% ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` 
+        : '';
+      inner = `<div class="l-photo-quote ${slide.photo?'':'no-photo'}">
+        ${pqPhoto}
+        <div class="pq-content">
+          <div class="pq-mark">"</div>
+          <p class="pq-quote" data-field="quote" contenteditable="true">${asteriskToItalic(d.quote||'Sua citação editorial.')}</p>
+          <p class="pq-attribution" data-field="attribution" contenteditable="true">${d.attribution||'MÉTODO SENTINELA'}</p>
+        </div>
+      </div>${sigBlock}`;
+      return `${renderOrnament(slide.ornament, slide.bg, !!slide.photo)}<div class="slide-content-wrap">${inner}</div>`;
+    case 'side-photo':
+      const spPhoto = slide.photo 
+        ? `<div style="position:absolute;inset:0;background-image:url('${slide.photo}');background-size:cover;background-position:${slide.photoX??50}% ${slide.photoY}%"></div><div style="position:absolute;inset:0;background:rgba(0,0,0,${slide.darken/100})"></div>` 
+        : '<div style="position:absolute;font-size:600px;left:-80px;top:50%;transform:translateY(-50%);color:var(--lima);opacity:.08;font-weight:800;line-height:.8">S</div>';
+      inner = `<div class="l-side-photo bg-${slide.bg}-side">
+        <div class="sp-photo">
+          ${spPhoto}
+          <div class="sp-photo-tag" data-field="photoTag" contenteditable="true">${d.photoTag||'MÉTODO SENTINELA'}</div>
+        </div>
+        <div class="sp-text">
+          <div class="sp-eyebrow" data-field="eyebrow" contenteditable="true">${d.eyebrow||'EYEBROW'}</div>
+          <h2 class="sp-headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'Headline editorial.')}</h2>
+          <p class="sp-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Texto de apoio.')}</p>
+        </div>
+      </div>${sigBlock}`;
+      return `${renderOrnament(slide.ornament, slide.bg, !!slide.photo)}<div class="slide-content-wrap">${inner}</div>`;
+    case 'frame':
+      const frPhotoStyle = slide.photo ? `background-image:url('${slide.photo}');background-position:${slide.photoX??50}% ${slide.photoY}%` : '';
+      inner = `<div class="l-frame">
+        <div class="fr-eyebrow" data-field="eyebrow" contenteditable="true">${d.eyebrow||'MÉTODO SENTINELA'}</div>
+        <div class="fr-photo" style="${frPhotoStyle}"></div>
+        <h2 class="fr-headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'Sua frase aqui.')}</h2>
+        <p class="fr-sub" data-field="sub" contenteditable="true">${d.sub||'Subtítulo opcional.'}</p>
+      </div>${sigBlock}`;
+      break;
+    case 'centered':
+      inner = `<div class="slide-mark">S</div><div class="l-centered">
+        <div class="ce-eyebrow" data-field="eyebrow" contenteditable="true">${d.eyebrow||'MÉTODO SENTINELA'}</div>
+        <h2 class="ce-headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'Headline centrado.')}</h2>
+        <p class="ce-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Texto de apoio centrado, sutil.')}</p>
       </div>${sigBlock}`;
       break;
     case 'story-manifesto':
@@ -814,19 +1155,54 @@ function renderSlideInner(slide, isStory){
   
   // For instrutor-card the photo goes inside, not as overlay
   if (slide.layout === 'instrutor-card'){
-    return `<div class="slide-content-wrap">${inner}</div>`;
+    return `${renderOrnament(slide.ornament, slide.bg, !!slide.photo)}<div class="slide-content-wrap">${inner}</div>`;
   }
-  return `${photoBlock}<div class="slide-content-wrap">${inner}</div>`;
+  return `${photoBlock}${renderOrnament(slide.ornament, slide.bg, !!slide.photo)}<div class="slide-content-wrap">${inner}</div>`;
 }
 
+const ALL_TS_KEYS = ['headline','lead','body','eyebrow','label','numero','sub','footer','quote','attribution','nome','papel','bio','cred','row','item','bigword','cta'];
+
 function buildSlideStyle(slide){
+  const sizes = slide.textSizes || {};
   let s = '--text-scale:' + (slide.textScale || 1) + ';';
-  if (slide.textSizes){
-    for (const k in slide.textSizes){
-      s += '--ts-' + k + ':' + slide.textSizes[k] + ';';
-    }
+  for (const k of ALL_TS_KEYS){
+    s += '--ts-' + k + ':' + (sizes[k] || 1) + ';';
   }
   return s;
+}
+
+const COLOR_MAP = {
+  'auto': '',
+  'navy': '#002B5C',
+  'creme': '#F4EDE0',
+  'lima': '#CBD12E',
+  'ferrugem': '#C1441E',
+  'white': '#FFFFFF',
+  'grafite': '#2C3A47'
+};
+const COLOR_MAP_JS = COLOR_MAP;
+window.COLOR_MAP_JS = COLOR_MAP;
+
+function applyHideAndColor(slideEl, slide){
+  if (slide.hidden){
+    for (const fld in slide.hidden){
+      if (slide.hidden[fld]){
+        slideEl.querySelectorAll('[data-field="' + fld + '"]').forEach(el => {
+          el.style.display = 'none';
+        });
+      }
+    }
+  }
+  if (slide.colors){
+    for (const fld in slide.colors){
+      const c = slide.colors[fld];
+      if (c && c !== 'auto'){
+        slideEl.querySelectorAll('[data-field="' + fld + '"]').forEach(el => {
+          el.style.color = COLOR_MAP[c] || c;
+        });
+      }
+    }
+  }
 }
 
 function getFieldsForLayout(layout){
@@ -843,7 +1219,8 @@ function getFieldsForLayout(layout){
       {key:'sub', label:'Subtítulo'}
     ];
     case 'capa-blocos': return [
-      {key:'bigword', label:'Palavras grandes'},
+      {key:'leftWord', label:'Palavra esquerda'},
+      {key:'rightWord', label:'Palavra direita'},
       {key:'footer', label:'Frase central'}
     ];
     case 'comparacao-x': return [
@@ -879,60 +1256,6 @@ function getFieldsForLayout(layout){
       {key:'bio', label:'Bio'},
       {key:'cred', label:'Credenciais'}
     ];
-    case 'editorial-split':
-      // Photo or color block left, text panel right
-      const slPhoto = slide.photo ? `<div class="slide-photo" style="background-image:url('${slide.photo}');background-position:center ${slide.photoY}%"></div><div class="slide-photo-darken" style="background:rgba(0,0,0,${slide.darken/100})"></div>` : '';
-      // For this layout, the left panel uses the photo if present, OR the navy/dark bg
-      inner = `<div class="l-editorial-split">
-        <div class="panel-left">
-          ${slide.photo ? '' : '<div class="slide-mark">S</div>'}
-          ${slPhoto}
-          <div class="pl-content">
-            <div class="pl-tag" data-field="tag" contenteditable="true">${d.tag||'MÉTODO SENTINELA'}</div>
-            <div class="pl-quote" data-field="quote" contenteditable="true">${asteriskToItalic(d.quote||'Pull quote elegante aqui.')}</div>
-          </div>
-        </div>
-        <div class="panel-right bg-${slide.bg}-side">
-          <div class="er-meta">
-            <span data-field="metaLeft" contenteditable="true">${d.metaLeft||'01'}</span>
-            <span data-field="metaCenter" contenteditable="true">${d.metaCenter||'CAPÍTULO'}</span>
-            <span data-field="metaRight" contenteditable="true">${d.metaRight||'04'}</span>
-          </div>
-          <h2 class="er-headline" data-field="headline" contenteditable="true">${asteriskToItalic(d.headline||'Headline editorial.')}</h2>
-          <p class="er-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Corpo de texto editorial, leve, com hierarquia delicada e respiro.')}</p>
-        </div>
-      </div>${sigBlock}`;
-      // For this layout, skip the outer photo block (handled inside)
-      return `<div class="slide-content-wrap">${inner}</div>`;
-    case 'stat-drop':
-      inner = `<div class="slide-mark">S</div><div class="l-stat-drop">
-        <div class="top-bar">
-          <span data-field="topLeft" contenteditable="true">${d.topLeft||'MÉTODO SENTINELA'}</span>
-          <span data-field="topRight" contenteditable="true">${d.topRight||'01 / 04'}</span>
-        </div>
-        <div class="center">
-          <div class="stat-eyebrow" data-field="eyebrow" contenteditable="true">${d.eyebrow||'EM NÚMEROS'}</div>
-          <div class="stat-big" data-field="stat" contenteditable="true">${d.stat||'97%'}</div>
-          <p class="stat-context" data-field="context" contenteditable="true">${asteriskToItalic(d.context||'É o que separa profissionais que *reagem* dos que conduzem com método.')}</p>
-        </div>
-        <div class="bottom-bar" data-field="bottomBar" contenteditable="true">${d.bottomBar||'· PCM · PROFESSIONAL CRISIS MANAGEMENT'}</div>
-      </div>${sigBlock}`;
-      break;
-    case 'index-card':
-      inner = `<div class="l-index-card">
-        <div class="ic-top">
-          <span data-field="capitulo" contenteditable="true">${d.capitulo||'PARTE 01'}</span>
-          <span class="ic-pn" data-field="pageNum" contenteditable="true">${d.pageNum||'01 / 04'}</span>
-        </div>
-        <div class="ic-number">
-          <span data-field="numero" contenteditable="true">${d.numero||'01'}</span>
-          <span class="ic-number-suffix" data-field="numSuffix" contenteditable="true">${d.numSuffix||'leitura'}</span>
-        </div>
-        <div class="ic-rule"></div>
-        <h2 class="ic-title" data-field="title" contenteditable="true">${asteriskToItalic(d.title||'Antes da crise, a leitura.')}</h2>
-        <p class="ic-body" data-field="body" contenteditable="true">${asteriskToItalic(d.body||'Reconhecer a escalada de comportamento *antes* dela acontecer. Esse é o primeiro pilar do método.')}</p>
-      </div>${sigBlock}`;
-      break;
     case 'story-manifesto': return [
       {key:'label', label:'Eyebrow'},
       {key:'headline', label:'Headline'},
@@ -940,14 +1263,14 @@ function getFieldsForLayout(layout){
       {key:'cta', label:'Botão CTA'}
     ];
     case 'editorial-split': return [
-      {key:'label', label:'Tag esquerda'},
-      {key:'quote', label:'Quote esquerda'},
-      {key:'headline', label:'Headline direita'},
-      {key:'body', label:'Corpo de texto'}
+      {key:'label', label:'Tag e meta'},
+      {key:'quote', label:'Pull-quote'},
+      {key:'headline', label:'Headline'},
+      {key:'body', label:'Corpo'}
     ];
     case 'stat-drop': return [
       {key:'label', label:'Topo/rodapé'},
-      {key:'numero', label:'Número/palavra grande'},
+      {key:'numero', label:'Número grande'},
       {key:'body', label:'Contexto'},
       {key:'footer', label:'Barra inferior'}
     ];
@@ -955,6 +1278,26 @@ function getFieldsForLayout(layout){
       {key:'label', label:'Topo (parte/página)'},
       {key:'numero', label:'Número grande'},
       {key:'headline', label:'Título'},
+      {key:'body', label:'Corpo'}
+    ];
+    case 'photo-quote': return [
+      {key:'quote', label:'Citação'},
+      {key:'attribution', label:'Assinatura'}
+    ];
+    case 'side-photo': return [
+      {key:'label', label:'Tag na foto'},
+      {key:'eyebrow', label:'Eyebrow'},
+      {key:'headline', label:'Headline'},
+      {key:'body', label:'Corpo'}
+    ];
+    case 'frame': return [
+      {key:'eyebrow', label:'Eyebrow'},
+      {key:'headline', label:'Headline'},
+      {key:'sub', label:'Subtítulo'}
+    ];
+    case 'centered': return [
+      {key:'eyebrow', label:'Eyebrow'},
+      {key:'headline', label:'Headline'},
       {key:'body', label:'Corpo'}
     ];
     default: return [];
@@ -983,11 +1326,15 @@ function buildSlideEl(post, slide, slideIdx, totalSlides, isStory){
       ` : ''}
     </div>
     <div class="slide-frame ${isStory?'story':'feed'}">
-      <div class="slide ${isStory?'story':'feed'} bg-${slide.bg} ${slide.photo?'has-photo':''}" id="slide-${key.replace(/:/g,'-')}" style="${buildSlideStyle(slide)}">
+      <div class="slide ${isStory?'story':'feed'} bg-${slide.bg} var-${slide.variation||1} ${slide.photo?'has-photo':''}" id="slide-${key.replace(/:/g,'-')}" style="${buildSlideStyle(slide)}">
         ${renderSlideInner(slide, isStory)}
       </div>
     </div>
   `;
+  
+  // Apply hide/color overrides to the rendered slide
+  const slideElForApply = wrap.querySelector('.slide');
+  if (slideElForApply) applyHideAndColor(slideElForApply, slide);
   
   // Click on the slide frame to select
   wrap.querySelector('.slide-frame').addEventListener('click', (e) => {
@@ -996,43 +1343,46 @@ function buildSlideEl(post, slide, slideIdx, totalSlides, isStory){
     selectSlide(key);
   });
   
-  // Attach input listeners to all contenteditable fields
-  wrap.querySelectorAll('[contenteditable][data-field]').forEach(field => {
-    field.addEventListener('blur', () => {
-      const f = field.dataset.field;
-      let val = field.innerHTML;
-      // Convert <em> back to *...* for storage
-      val = italicToAsterisk(val);
-      // Save value depending on field type
-      if (f === 'sigText'){
-        // not stored per-slide currently; could be added
-      } else if (f.startsWith('item')){
-        const i = parseInt(f.slice(4));
-        if (!isStory) slide.data.items[i] = val;
-      } else if (f.startsWith('cred')){
-        const i = parseInt(f.slice(4));
-        slide.data.creds[i] = val;
-      } else if (f.startsWith('rowL')){
-        const i = parseInt(f.slice(4));
-        slide.data.rows[i][0] = val;
-      } else if (f.startsWith('rowR')){
-        const i = parseInt(f.slice(4));
-        slide.data.rows[i][1] = val;
-      } else {
-        slide.data[f] = val;
-      }
-      saveState();
-      // Re-render to apply asterisk transform
-      const el = wrap.querySelector('.slide');
-      if (el){
-        el.innerHTML = renderSlideInner(slide, isStory);
-        // Rebind editable
-        wrap.querySelectorAll('[contenteditable][data-field]').forEach(f2 => {
-          f2.addEventListener('blur', field._handler || (()=>{}));
-        });
-      }
+  // Attach input listeners to all contenteditable fields (recursive: re-attaches after re-render)
+  function attachEditableHandlers(){
+    wrap.querySelectorAll('[contenteditable][data-field]').forEach(field => {
+      field.addEventListener('blur', onFieldBlur);
     });
-  });
+  }
+  function onFieldBlur(e){
+    const field = e.currentTarget;
+    const f = field.dataset.field;
+    let val = field.innerHTML;
+    // Convert <em> back to *...* for storage
+    val = italicToAsterisk(val);
+    // Save value depending on field type
+    if (f === 'sigText'){
+      // not stored per-slide currently
+    } else if (f.startsWith('item')){
+      const i = parseInt(f.slice(4));
+      if (!isStory && slide.data.items) slide.data.items[i] = val;
+    } else if (f.startsWith('cred')){
+      const i = parseInt(f.slice(4));
+      if (slide.data.creds) slide.data.creds[i] = val;
+    } else if (f.startsWith('rowL')){
+      const i = parseInt(f.slice(4));
+      if (slide.data.rows) slide.data.rows[i][0] = val;
+    } else if (f.startsWith('rowR')){
+      const i = parseInt(f.slice(4));
+      if (slide.data.rows) slide.data.rows[i][1] = val;
+    } else {
+      slide.data[f] = val;
+    }
+    saveState();
+    // Re-render to apply asterisk transform AND re-apply hide/color AND re-attach handlers
+    const el = wrap.querySelector('.slide');
+    if (el){
+      el.innerHTML = renderSlideInner(slide, isStory);
+      applyHideAndColor(el, slide);
+      attachEditableHandlers();
+    }
+  }
+  attachEditableHandlers();
   
   return wrap;
 }
@@ -1134,13 +1484,24 @@ function renderControls(){
     controlsPanel.innerHTML = `
       <div class="ctrl-head">Controles</div>
       <div class="ctrl-empty">
-        Clique num <strong>slide</strong> pra abrir os controles.<br><br>
-        Você pode editar tamanho, cor, alinhamento, foto de fundo, posição da assinatura, e mais.<br><br>
-        <strong>Dicas:</strong><br>
-        · Clique nos textos pra editar conteúdo<br>
-        · Use <code>*palavra*</code> pra deixar em destaque com tarja lima<br>
-        · Use os botões <code>‹ ›</code> pra reordenar slides<br>
-        · Use <code>+</code> pra duplicar, <code>×</code> pra excluir
+        Toca num <strong>slide</strong> pra abrir os controles.<br><br>
+        Aqui você muda tamanho, cor, foto, alinhamento, e tudo mais.
+      </div>
+      <div class="ctrl-section" style="margin-top:20px">
+        <label class="ctrl-label">Como destacar texto</label>
+        <div class="syntax-help">
+          <div class="syntax-row">
+            <code>*palavra*</code>
+            <span class="syntax-arrow">→</span>
+            <span class="syntax-example syntax-italic">palavra</span>
+          </div>
+          <div class="syntax-row">
+            <code>**palavra**</code>
+            <span class="syntax-arrow">→</span>
+            <span class="syntax-example syntax-tarja">palavra</span>
+          </div>
+        </div>
+        <div class="ctrl-help">Toca no texto do slide, edita, e escreve assim que o destaque aparece automaticamente.</div>
       </div>
     `;
     return;
@@ -1168,27 +1529,38 @@ function renderControls(){
     </div>
     
     <div class="ctrl-section">
-      <label class="ctrl-label">Tamanho por elemento</label>
+      <label class="ctrl-label">Cada elemento de texto</label>
       <div id="c-per-field-sizes">
         ${getFieldsForLayout(slide.layout).map(f => {
           const cur = (slide.textSizes && slide.textSizes[f.key]) || 1;
-          return `<div style="margin-bottom:8px">
-            <div style="display:flex;justify-content:space-between;font-size:10px;opacity:.65;margin-bottom:3px">
-              <span>${f.label}</span><span class="c-ts-val" id="c-ts-val-${f.key}">${Math.round(cur*100)}%</span>
+          const isHidden = (slide.hidden && slide.hidden[f.key]) || false;
+          const curColor = (slide.colors && slide.colors[f.key]) || 'auto';
+          return `<div class="field-block" data-fld-block="${f.key}" style="margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.04)">
+            <div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;margin-bottom:6px">
+              <span style="font-weight:500;opacity:.85">${f.label}</span>
+              <div style="display:flex;gap:4px;align-items:center">
+                <button class="field-btn c-hide" data-fld="${f.key}" title="${isHidden?'Mostrar':'Ocultar'}" style="${isHidden?'background:var(--ferrugem);color:#fff;border-color:var(--ferrugem)':''}">${isHidden?'oculto':'👁'}</button>
+              </div>
             </div>
-            <div class="ctrl-slider-wrap">
+            <div class="ctrl-slider-wrap" style="${isHidden?'opacity:.35;pointer-events:none':''}">
               <input type="range" class="c-ts" data-fld="${f.key}" min="0.4" max="2.0" step="0.05" value="${cur}">
+              <span class="c-ts-val" id="c-ts-val-${f.key}" style="min-width:38px;text-align:right">${Math.round(cur*100)}%</span>
+            </div>
+            <div class="color-row" style="${isHidden?'opacity:.35;pointer-events:none':''}">
+              ${['auto','navy','creme','lima','ferrugem','white','grafite'].map(c => `
+                <button class="color-pip ${curColor===c?'active':''}" data-fld="${f.key}" data-color="${c}" title="${c}" style="background:${c==='auto'?'transparent':COLOR_MAP_JS[c]};${c==='auto'?'border:1px dashed rgba(255,255,255,.4)':''}${c==='white'?'border:1px solid rgba(255,255,255,.3)':''}">${c==='auto'?'auto':''}</button>
+              `).join('')}
             </div>
           </div>`;
         }).join('')}
       </div>
-      <div class="ctrl-help">Mexe em cada texto separado</div>
+      <div class="ctrl-help">Tamanho, ocultar (👁) e cor de cada texto separado</div>
     </div>
     
     <div class="ctrl-section">
       <label class="ctrl-label">Cor de fundo</label>
       <div class="swatch-row">
-        ${['navy','creme','white','cremesoft','grafite','verde-escuro','verde-musk','verde-sage','split'].map(c =>
+        ${['navy','creme','white','cremesoft','grafite','ferrugem','verde-escuro','verde-musk','verde-sage','split'].map(c =>
           `<div class="swatch ${slide.bg===c?'active':''}" data-c="${c}" title="${c}"></div>`
         ).join('')}
       </div>
@@ -1200,14 +1572,34 @@ function renderControls(){
       <select id="c-layout" style="width:100%;padding:9px 12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:#fff;font-family:inherit;font-size:12px">
         ${''}
       </select>
-      <div class="ctrl-help">Mudar layout reseta o conteúdo do slide</div>
+      <div class="ctrl-help">Texto editado fica preservado quando os campos forem compatíveis</div>
+    </div>
+    
+    <div class="ctrl-section">
+      <label class="ctrl-label">Variação visual</label>
+      <div class="ctrl-row" id="c-variations">
+        ${LAYOUT_VARIATIONS[slide.layout] ? LAYOUT_VARIATIONS[slide.layout].map((v,i) => 
+          `<button class="ctrl-chip ${(slide.variation||1)===i+1?'active':''}" data-var="${i+1}">${v}</button>`
+        ).join('') : '<span style="font-size:11px;opacity:.5">Esse layout só tem uma versão</span>'}
+      </div>
+      <div class="ctrl-help">Troca o estilo mantendo o texto</div>
     </div>
     ` : ''}
     
     <div class="ctrl-section">
+      <label class="ctrl-label">Elemento decorativo</label>
+      <div class="ctrl-row" style="flex-wrap:wrap;gap:4px">
+        ${ORNAMENT_OPTIONS.map(o => 
+          `<button class="ctrl-chip c-ornament ${(slide.ornament||'none')===o.id?'active':''}" data-ornament="${o.id}">${o.label}</button>`
+        ).join('')}
+      </div>
+      <div class="ctrl-help">Cor se adapta ao fundo automaticamente</div>
+    </div>
+    
+    <div class="ctrl-section">
       <label class="ctrl-label">Foto de fundo</label>
       ${slide.photo ? `
-        <div style="position:relative;width:100%;height:80px;background-image:url('${slide.photo}');background-size:cover;background-position:center ${slide.photoY}%;border-radius:6px;margin-bottom:8px"></div>
+        <div style="position:relative;width:100%;height:80px;background-image:url('${slide.photo}');background-size:cover;background-position:${slide.photoX??50}% ${slide.photoY}%;border-radius:6px;margin-bottom:8px"></div>
         <button class="ctrl-file-btn" onclick="removePhoto()" style="margin-bottom:6px;color:var(--ferrugem);border-color:rgba(193,68,30,.4)">Remover foto</button>
       ` : ''}
       <input type="file" id="c-photo-upload" accept="image/*" style="display:none">
@@ -1228,10 +1620,16 @@ function renderControls(){
     
     ${slide.photo ? `
     <div class="ctrl-section">
-      <label class="ctrl-label">Posição vertical da foto</label>
+      <label class="ctrl-label">Posição da foto</label>
       <div class="ctrl-slider-wrap">
+        <span style="font-size:11px;opacity:.55;min-width:14px">↕</span>
         <input type="range" id="c-photo-y" min="0" max="100" step="1" value="${slide.photoY}">
         <span class="ctrl-val" id="c-photo-y-val">${slide.photoY}%</span>
+      </div>
+      <div class="ctrl-slider-wrap" style="margin-top:6px">
+        <span style="font-size:11px;opacity:.55;min-width:14px">↔</span>
+        <input type="range" id="c-photo-x" min="0" max="100" step="1" value="${slide.photoX??50}">
+        <span class="ctrl-val" id="c-photo-x-val">${slide.photoX??50}%</span>
       </div>
     </div>
     <div class="ctrl-section">
@@ -1264,9 +1662,27 @@ function renderControls(){
     <div class="ctrl-section">
       <label class="ctrl-label">Ações</label>
       <div class="ctrl-row">
-        <button class="ctrl-chip" onclick="resetSlide()">Resetar</button>
+        <button class="ctrl-chip" onclick="resetSlide()">Resetar tamanhos</button>
         <button class="ctrl-chip" onclick="exportCurrent()" style="background:var(--lima);color:var(--navy);border-color:var(--lima);font-weight:700">Baixar PNG</button>
       </div>
+      <div class="ctrl-help" style="margin-top:8px">"Resetar tamanhos" volta tamanho geral e por elemento pro padrão 100%. Não mexe em cor, foto, texto ou layout.</div>
+    </div>
+    
+    <div class="ctrl-section">
+      <label class="ctrl-label">Como destacar texto</label>
+      <div class="syntax-help">
+        <div class="syntax-row">
+          <code>*palavra*</code>
+          <span class="syntax-arrow">→</span>
+          <span class="syntax-example syntax-italic">palavra</span>
+        </div>
+        <div class="syntax-row">
+          <code>**palavra**</code>
+          <span class="syntax-arrow">→</span>
+          <span class="syntax-example syntax-tarja">palavra</span>
+        </div>
+      </div>
+      <div class="ctrl-help">Toca no texto do slide e escreve com asteriscos. O destaque aparece quando você sai do campo.</div>
     </div>
   `;
   
@@ -1278,14 +1694,62 @@ function renderControls(){
         `<option value="${l.id}" ${slide.layout===l.id?'selected':''}>${l.label} · ${l.desc}</option>`
       ).join('');
       select.addEventListener('change', e => {
-        if (confirm('Mudar o layout vai resetar o conteúdo deste slide. Continuar?')){
-          slide.layout = e.target.value;
-          slide.data = JSON.parse(JSON.stringify(window.DEFAULT_DATA_FOR[slide.layout] || {}));
-          saveState();
-          renderAll();
-        } else {
-          renderControls();
+        const newLayout = e.target.value;
+        const oldLayout = slide.layout;
+        const newDefaults = JSON.parse(JSON.stringify(window.DEFAULT_DATA_FOR[newLayout] || {}));
+        
+        // Semantic role mapping: each layout field -> standardized role
+        const ROLE_MAP = {
+          'manifesto': {headline:'big', footer:'support'},
+          'capa-numero': {label:'eyebrow', numero:'big', headline:'support', sub:'support2'},
+          'capa-blocos': {leftWord:'big', rightWord:'big2', footer:'support'},
+          'comparacao-x': {leftTitle:'eyebrow', rightTitle:'eyebrow2'},
+          'lista-numerada': {eyebrow:'eyebrow', headline:'big', footer:'support'},
+          'pull-quote': {quote:'big', attribution:'support'},
+          'texto-corrido': {eyebrow:'eyebrow', lead:'big', body:'support'},
+          'cta-final': {eyebrow:'eyebrow', headline:'big', sub:'support', btnText:'cta'},
+          'instrutor-card': {nome:'big', papel:'support', bio:'support2'},
+          'editorial-split': {tag:'eyebrow', quote:'support2', headline:'big', body:'support'},
+          'stat-drop': {topLeft:'eyebrow', topRight:'eyebrow2', stat:'big', context:'support', bottomBar:'footer-tag'},
+          'index-card': {capitulo:'eyebrow', pageNum:'eyebrow2', numero:'big', title:'big2', body:'support'},
+          'story-manifesto': {label:'eyebrow', headline:'big', sub:'support', cta:'cta'},
+          'photo-quote': {quote:'big', attribution:'support'},
+          'side-photo': {photoTag:'eyebrow2', eyebrow:'eyebrow', headline:'big', body:'support'},
+          'frame': {eyebrow:'eyebrow', headline:'big', sub:'support'},
+          'centered': {eyebrow:'eyebrow', headline:'big', body:'support'}
+        };
+        
+        const oldRoles = ROLE_MAP[oldLayout] || {};
+        const newRoles = ROLE_MAP[newLayout] || {};
+        const roleValues = {};
+        for (const oldField in oldRoles){
+          if (slide.data[oldField] !== undefined){
+            roleValues[oldRoles[oldField]] = slide.data[oldField];
+          }
         }
+        const merged = {...newDefaults};
+        for (const newField in newRoles){
+          const role = newRoles[newField];
+          if (roleValues[role] !== undefined && typeof roleValues[role] === typeof newDefaults[newField]){
+            merged[newField] = roleValues[role];
+          }
+        }
+        // Preserve arrays where field name matches
+        for (const k of ['items','rows','creds']){
+          if (Array.isArray(slide.data[k]) && Array.isArray(newDefaults[k])){
+            merged[k] = slide.data[k];
+          }
+        }
+        
+        slide.layout = newLayout;
+        slide.data = merged;
+        // Adjust variation if new layout has fewer
+        const maxVar = (LAYOUT_VARIATIONS[newLayout] || []).length || 1;
+        if ((slide.variation || 1) > maxVar) slide.variation = 1;
+        saveState();
+        renderAll();
+        setTimeout(() => renderControls(), 50);
+        showToast('Layout trocado');
       });
     }
   }
@@ -1319,6 +1783,64 @@ function bindControls(slide){
       if (el) el.style.setProperty('--ts-' + fld, val);
     });
     s.addEventListener('change', () => saveState());
+  });
+  
+  // Hide buttons per field
+  controlsPanel.querySelectorAll('.c-hide').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!slide.hidden) slide.hidden = {};
+      const fld = btn.dataset.fld;
+      slide.hidden[fld] = !slide.hidden[fld];
+      saveState();
+      // Re-render slide and panel
+      const slideKey = STATE.selectedKey.replace(/:/g,'-');
+      const slideEl = document.getElementById('slide-' + slideKey);
+      if (slideEl){
+        // Reset display for all this field's elements, then re-apply
+        slideEl.querySelectorAll('[data-field="' + fld + '"]').forEach(el => { el.style.display = ''; });
+        applyHideAndColor(slideEl, slide);
+      }
+      renderControls();
+    });
+  });
+  
+  // Color pips per field
+  controlsPanel.querySelectorAll('.color-pip').forEach(pip => {
+    pip.addEventListener('click', () => {
+      if (!slide.colors) slide.colors = {};
+      const fld = pip.dataset.fld;
+      const color = pip.dataset.color;
+      slide.colors[fld] = color;
+      saveState();
+      // Update UI: active state
+      controlsPanel.querySelectorAll('.color-pip[data-fld="' + fld + '"]').forEach(p => 
+        p.classList.toggle('active', p.dataset.color === color));
+      // Apply to slide
+      const slideEl = document.getElementById('slide-' + STATE.selectedKey.replace(/:/g,'-'));
+      if (slideEl){
+        slideEl.querySelectorAll('[data-field="' + fld + '"]').forEach(el => {
+          if (color === 'auto'){ el.style.color = ''; }
+          else { el.style.color = COLOR_MAP[color] || color; }
+        });
+      }
+    });
+  });
+  
+  // Variation buttons
+  controlsPanel.querySelectorAll('[data-var]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const variation = parseInt(btn.dataset.var);
+      slide.variation = variation;
+      // Apply immediately by replacing var-N class on the slide element
+      const el = document.getElementById('slide-' + STATE.selectedKey.replace(/:/g,'-'));
+      if (el){
+        el.className = el.className.replace(/var-\d+/g,'').trim() + ' var-' + variation;
+      }
+      // Update active state of buttons
+      controlsPanel.querySelectorAll('[data-var]').forEach(x => 
+        x.classList.toggle('active', parseInt(x.dataset.var) === variation));
+      saveState();
+    });
   });
   
   controlsPanel.querySelectorAll('.swatch').forEach(sw => {
@@ -1358,6 +1880,18 @@ function bindControls(slide){
     });
   });
   
+  // Ornament chips
+  controlsPanel.querySelectorAll('.c-ornament').forEach(b => {
+    b.addEventListener('click', () => {
+      const o = b.dataset.ornament;
+      slide.ornament = (o === 'none') ? null : o;
+      controlsPanel.querySelectorAll('.c-ornament').forEach(x => 
+        x.classList.toggle('active', x.dataset.ornament === (slide.ornament||'none')));
+      saveState();
+      renderAll();
+    });
+  });
+  
   // Photo upload
   const fileInput = document.getElementById('c-photo-upload');
   if (fileInput){
@@ -1383,13 +1917,32 @@ function bindControls(slide){
       document.getElementById('c-photo-y-val').textContent = slide.photoY+'%';
       const el = document.getElementById('slide-' + STATE.selectedKey.replace(/:/g,'-'));
       if (el){
+        const px = slide.photoX ?? 50;
         const ph = el.querySelector('.slide-photo');
-        if (ph) ph.style.backgroundPosition = `center ${slide.photoY}%`;
+        if (ph) ph.style.backgroundPosition = `${px}% ${slide.photoY}%`;
         const instPh = el.querySelector('.l-instrutor-card .photo');
-        if (instPh) instPh.style.backgroundPosition = `center ${slide.photoY}%`;
+        if (instPh) instPh.style.backgroundPosition = `${px}% ${slide.photoY}%`;
       }
     });
     photoY.addEventListener('change', () => saveState());
+  }
+  
+  // Photo X
+  const photoX = document.getElementById('c-photo-x');
+  if (photoX){
+    photoX.addEventListener('input', e => {
+      slide.photoX = parseInt(e.target.value);
+      document.getElementById('c-photo-x-val').textContent = slide.photoX+'%';
+      const el = document.getElementById('slide-' + STATE.selectedKey.replace(/:/g,'-'));
+      if (el){
+        const py = slide.photoY ?? 50;
+        const ph = el.querySelector('.slide-photo');
+        if (ph) ph.style.backgroundPosition = `${slide.photoX}% ${py}%`;
+        const instPh = el.querySelector('.l-instrutor-card .photo');
+        if (instPh) instPh.style.backgroundPosition = `${slide.photoX}% ${py}%`;
+      }
+    });
+    photoX.addEventListener('change', () => saveState());
   }
   
   // Gallery tabs
@@ -1456,14 +2009,33 @@ window.applyPhotoUrl = () => {
 window.resetSlide = () => {
   const slide = getSlide(STATE.selectedKey);
   if (!slide) return;
-  if (!confirm('Resetar este slide pros valores padrão?')) return;
   slide.textScale = 1;
+  slide.textSizes = {};
+  slide.colors = {};
+  slide.hidden = {};
   slide.align = 'left';
   slide.sigPos = 'bottom';
   slide.photoY = 50;
+  slide.photoX = 50;
   slide.darken = 50;
+  slide.ornament = null;
   saveState();
   renderAll();
+  setTimeout(() => renderControls(), 50);
+  showToast('Slide resetado');
+};
+
+window.resetAllToOriginal = () => {
+  const ok = confirm('Restaurar TUDO aos 6 posts originais? Descarta edições, fotos, cores e textos digitados. Não dá pra desfazer.');
+  if (!ok) return;
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+  STATE.posts = JSON.parse(INITIAL_POSTS_JSON);
+  STATE.stories = JSON.parse(INITIAL_STORIES_JSON);
+  STATE.selectedKey = null;
+  saveState();
+  renderAll();
+  setTimeout(() => renderControls(), 50);
+  showToast('Posts originais restaurados');
 };
 
 window.exportCurrent = () => {
@@ -1521,7 +2093,6 @@ window.duplicateSlide = (postId, slideId) => {
 window.deleteSlide = (postId, slideId) => {
   const post = getPost(postId);
   if (!post || post.slides.length <= 1) return;
-  if (!confirm('Excluir este slide?')) return;
   post.slides = post.slides.filter(s => s.id !== slideId);
   if (STATE.selectedKey && STATE.selectedKey.includes(slideId)) STATE.selectedKey = null;
   saveState();
@@ -1536,7 +2107,7 @@ window.addSlide = (postId) => {
     layout: 'manifesto',
     bg: 'navy',
     data: JSON.parse(JSON.stringify(window.DEFAULT_DATA_FOR['manifesto'])),
-    photo: null, photoY: 50, darken: 50, textScale: 1.0, align: 'left', sigPos: 'bottom',
+    photo: null, photoY: 50, photoX: 50, darken: 50, textScale: 1.0, align: 'left', sigPos: 'bottom',
     textSizes: {}
   };
   post.slides.push(newSlide);
@@ -1557,14 +2128,22 @@ async function exportSlide(postId, slideId){
   const el = document.getElementById(`slide-feed-${postId}-${slideId}`);
   if (!el) return;
   showToast(`Gerando…`);
+  // Temporarily strip 'selected' class from ALL frames to remove any transforms
+  // that would break position:fixed contexts on .capturing
+  const wasSelected = [];
+  document.querySelectorAll('.slide-frame.selected').forEach(f => {
+    wasSelected.push(f);
+    f.classList.remove('selected');
+  });
   el.classList.add('capturing');
-  await new Promise(r => setTimeout(r, 100));
+  await new Promise(r => setTimeout(r, 150));
   try {
     const canvas = await html2canvas(el, {
       width:1080, height:1350, windowWidth:1080, windowHeight:1350,
       backgroundColor:null, scale:1, useCORS:true, logging:false
     });
     el.classList.remove('capturing');
+    wasSelected.forEach(f => f.classList.add('selected'));
     const link = document.createElement('a');
     const post = getPost(postId);
     const idx = post.slides.findIndex(s => s.id === slideId);
@@ -1574,8 +2153,9 @@ async function exportSlide(postId, slideId){
     showToast('Salvo!');
   } catch(err){
     el.classList.remove('capturing');
+    wasSelected.forEach(f => f.classList.add('selected'));
     console.error(err);
-    showToast('Erro');
+    showToast('Erro ao salvar');
   }
 }
 window.exportSlide = exportSlide;
@@ -1584,14 +2164,20 @@ async function exportStory(storyId){
   const el = document.getElementById(`slide-story-${storyId}-0`);
   if (!el) return;
   showToast('Gerando story…');
+  const wasSelected = [];
+  document.querySelectorAll('.slide-frame.selected').forEach(f => {
+    wasSelected.push(f);
+    f.classList.remove('selected');
+  });
   el.classList.add('capturing');
-  await new Promise(r => setTimeout(r, 100));
+  await new Promise(r => setTimeout(r, 150));
   try {
     const canvas = await html2canvas(el, {
       width:1080, height:1920, windowWidth:1080, windowHeight:1920,
       backgroundColor:null, scale:1, useCORS:true, logging:false
     });
     el.classList.remove('capturing');
+    wasSelected.forEach(f => f.classList.add('selected'));
     const story = STATE.stories.find(s => s.id === storyId);
     const link = document.createElement('a');
     link.download = `sentinela-story${story.n}.png`;
@@ -1600,7 +2186,9 @@ async function exportStory(storyId){
     showToast('Salvo!');
   } catch(err){
     el.classList.remove('capturing');
-    showToast('Erro');
+    wasSelected.forEach(f => f.classList.add('selected'));
+    console.error(err);
+    showToast('Erro ao salvar');
   }
 }
 window.exportStory = exportStory;
@@ -1616,15 +2204,19 @@ window.exportAll = async (postId) => {
 };
 
 // ====================== TABS ======================
-document.querySelectorAll('.app-tab').forEach(t => {
+document.querySelectorAll('.app-tab[data-tab]').forEach(t => {
   t.addEventListener('click', () => {
-    document.querySelectorAll('.app-tab').forEach(x => x.classList.toggle('active', x === t));
+    document.querySelectorAll('.app-tab[data-tab]').forEach(x => x.classList.toggle('active', x === t));
     document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + t.dataset.tab));
     STATE.tab = t.dataset.tab;
   });
 });
 
 // ====================== INIT ======================
+// Clean up old storage keys from previous versions to avoid stale state
+['sentinela_postmaker_v4','sentinela_postmaker_v5','sentinela_postmaker_v6','sentinela_postmaker_v7'].forEach(k => {
+  try { localStorage.removeItem(k); } catch(e){}
+});
 loadState();
 renderAll();
 
